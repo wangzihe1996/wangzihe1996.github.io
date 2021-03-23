@@ -29,13 +29,13 @@ jobs:
           npm install hexo-cli -g
           npm install
 
-    - name: Set Env
-      env: 
-        GITHUB_ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}  
-      run: |
-        git config --global user.name 'wangzihe1996'
-        git config --global user.email 'wingzinker@outlook.com'
-        sed -i "s/GITHUB_ACCESS_TOKEN/$GITHUB_ACCESS_TOKEN/g" ./_config.yml
+      - name: Set Env
+        env: 
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}  
+        run: |
+          git config --global user.name 'wangzihe1996'
+          git config --global user.email 'wingzinker@outlook.com'
+          sed -i "s/GH_TOKEN/$GH_TOKEN/g" ./_config.yml
 
       - name: Generate files
         run: |
