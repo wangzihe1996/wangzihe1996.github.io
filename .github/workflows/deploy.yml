@@ -22,15 +22,10 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: Cache Node Dependencies
-        id: cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{runner.OS}}-npm-caches-${{ hashFiles('package-lock.json') }}
-
       - name: Install dependencies
         run: |
+          sudo apt update
+          sudo apt install pandoc -y
           npm install hexo-cli -g
           npm install
 
