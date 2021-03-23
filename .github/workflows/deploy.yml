@@ -36,6 +36,6 @@ jobs:
 
       - name: Deploy blog
         run: |
-          git config --global user.name "wangzihe"
+          git config --global user.name "wangzihe1996"
           git config --global user.email "wingzinker@outlook.com"
           hexo deploy
