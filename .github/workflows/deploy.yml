@@ -9,7 +9,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  blog-cicd:
+  build:
     name: Hexo build and deploy
     runs-on: ubuntu-latest
 
@@ -17,10 +17,10 @@ jobs:
       - name: Checkout codes
         uses: actions/checkout@v2
 
-      - name: Setup node
-        uses: actions/setup-node@v1.1.0
+      - name: Setup node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
         with:
-          version: "14.x"
+          node-version: '12.x'
 
       - name: Cache Node Dependencies
         id: cache
@@ -36,14 +36,14 @@ jobs:
 
       - name: Generate files
         run: |
+          hexo clean
           hexo generate
 
       - name: Deploy blog
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.GH_TOKEN }}
-          external_repository: ${{ secrets.GH_REF }}
-          publish_branch: master
-          publish_dir: ./public
-          full_commit_message: GitHub Actions Auto Builder
-          disable_nojekyll: true
+        run: |
+        cd ./public && git init && git add .
+        git config --local user.name "wangzihe"
+        git config --local user.email "wingzinker@outlook.com"
+        git add -A
+        git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+        git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/wangzihe1996/wangzihe1996.github.io" master:master
