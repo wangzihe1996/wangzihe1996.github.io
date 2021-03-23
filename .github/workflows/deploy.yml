@@ -35,7 +35,15 @@ jobs:
           hexo generate
 
       - name: Deploy blog
-        run: |
-          git config --global user.name "wangzihe1996"
-          git config --global user.email "wingzinker@outlook.com"
-          hexo deploy
+          # run: |
+          #   git config --global user.name "wangzihe1996"
+          #   git config --global user.email "wingzinker@outlook.com"
+          #   hexo deploy
+                  uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GH_TOKEN }}
+          external_repository: ${{ secrets.GH_REF }}
+          publish_branch: master
+          publish_dir: ./public
+          full_commit_message: GitHub Actions Auto Builder
+          disable_nojekyll: true
