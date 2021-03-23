@@ -39,7 +39,7 @@ jobs:
           #   git config --global user.name "wangzihe1996"
           #   git config --global user.email "wingzinker@outlook.com"
           #   hexo deploy
-                  uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.GH_TOKEN }}
           external_repository: ${{ secrets.GH_REF }}
