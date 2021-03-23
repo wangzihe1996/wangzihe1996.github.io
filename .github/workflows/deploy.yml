@@ -3,7 +3,7 @@ name: Hexo
 on:
   push:
     branches:
-      - master
+      - hexo
 
 env:
   TZ: Asia/Shanghai
