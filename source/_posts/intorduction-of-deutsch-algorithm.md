@@ -46,6 +46,8 @@ $$
 
 然后只需测量上边部分，如果测量结果为$|0\rangle^{\otimes n}$，则是常数函数，否则是对称函数。
 
+<!-- more -->
+
 **原理如下**：
 
 对于$|\psi_{3}\rangle$，只考虑前n个qubit，则是$\frac{1}{2^{n}}\sum_{x=0}^{2^{n}-1}\sum_{y=0}^{2^{n}-1}(-1)^{f(x)+x\cdot y}|y\rangle=\frac{1}{2^{n}}\sum_{x=0}^{2^{n}-1}(-1)^{f(x)}\sum_{y=0}^{2^{n}-1}(-1)^{x\cdot y}|y\rangle$。

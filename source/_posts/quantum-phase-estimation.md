@@ -32,6 +32,8 @@ $$
 
 所以，逆QFT为：$\mathcal{F}^{-1}(|k\rangle)=\frac{1}{\sqrt{2^{n}}}\sum_{j=0}^{2^{n}-1}\exp(-2\pi ijk/2^{n})|j\rangle$
 
+<!-- more -->
+
 ## 逆QFT的张量积形式
 
 定义$k$的二进制表示，$k=k_{n-1}k_{n-2}\ldots k_{0}=k_{n-1}2^{n-1}+k_{n-2}2^{n-2}+\ldots +k_{0}2^{0}$，对于小数来说，$0.k_{l}k_{l+1}\ldots k_{m}=\frac{1}{2}k_{l}+\frac{1}{2^{2}}k_{l+1}+\ldots +\frac{1}{2^{m-l+1}}k_{m}$。

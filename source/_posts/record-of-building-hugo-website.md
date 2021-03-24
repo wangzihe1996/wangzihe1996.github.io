@@ -20,6 +20,8 @@ tags:
 
 在git bash中输入`hugo help`，若正常显示`hugo`的使用指南即表示hugo环境搭建成功。
 
+<!-- more -->
+
 ## 生成hugo网站
 
 在git bash中，跳转到`$hugo`目录下（以下用`/c/hugo`代替`$hugo`），即使用命令`cd /c/hugo`，然后执行`hugo new site Sites`，即会生成一个名叫`Sites`的文件夹（你也可以将`Sites`替换为其它你想使用的文件夹名），里面包括了你的网站。

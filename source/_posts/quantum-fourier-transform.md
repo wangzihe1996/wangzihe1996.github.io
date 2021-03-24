@@ -39,8 +39,9 @@ $$
 \end{equation}
 $$
 
-
 所以QFT为：$\mathcal{F}(|j\rangle)=\frac{1}{\sqrt{2^{n}}}\sum_{k=0}^{2^{n}-1}e^{2\pi ijk/2^{n}}|k\rangle$。
+
+<!-- more -->
 
 ## QFT的张量积形式
 
