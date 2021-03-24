@@ -132,7 +132,7 @@ theme_config:
     enable: true
   
   # Remove unnecessary files after hexo generate.
-  minify: false
+  minify: true
   
   # Define custom file paths.
   # Create your custom files in site directory `source/_data` and uncomment needed files below.
@@ -199,10 +199,10 @@ theme_config:
   # External url should start with http:// or https://
   menu:
     home: / || fa fa-home
-    about: /about/ || fa fa-user
-    tags: /tags/ || fa fa-tags
-    categories: /categories/ || fa fa-th
     archives: /archives/ || fa fa-archive
+    categories: /categories/ || fa fa-th
+    tags: /tags/ || fa fa-tags
+    about: /about/ || fa fa-user
     #schedule: /schedule/ || fa fa-calendar
     #sitemap: /sitemap.xml || fa fa-sitemap
     #commonweal: /404/ || fa fa-heartbeat
@@ -370,10 +370,10 @@ theme_config:
   # Dependencies: https://github.com/next-theme/hexo-word-counter
   symbols_count_time:
     separated_meta: true
-    item_text_total: false
+    item_text_total: true
   
   # Use icon instead of the symbol # to indicate the tag at the bottom of the post
-  tag_icon: false
+  tag_icon: true
   
   # Donate (Sponsor) settings
   # Front-matter variable (unsupport animation).
@@ -461,8 +461,8 @@ theme_config:
   # Set the text alignment in posts / pages.
   text_align:
     # Available values: start | end | left | right | center | justify | justify-all | match-parent
-    desktop: justify
-    mobile: justify
+    desktop: start
+    mobile: start
   
   # Reduce padding / margin indents on devices with narrow width.
   mobile_layout_economy: true
@@ -637,7 +637,7 @@ theme_config:
   # A JavaScript library for zooming images like Medium.
   # Warning: Do not enable both `fancybox` and `mediumzoom`.
   # For more information: https://medium-zoom.francoischalifour.com
-  mediumzoom: false
+  mediumzoom: true
   
   # Vanilla JavaScript plugin for lazyloading images.
   # For more information: https://apoorv.pro/lozad.js/demo/
