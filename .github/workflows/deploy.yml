@@ -48,4 +48,5 @@ jobs:
           COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
           hexo clean
+          hexo generate
           hexo deploy -m "$COMMIT_MSG"
