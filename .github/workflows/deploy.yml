@@ -43,6 +43,13 @@ jobs:
           git config --global user.name 'wangzihe1996'
           git config --global user.email 'wingzinker@outlook.com'
 
+      - name: Retain Commit History
+        run: |
+          git clone https://github.com/wangzihe1996/wangzihe1996.github.io .deploy_git 
+          cd .deploy_git
+          git checkout master
+          cd ../
+
       - name: Deploy blog
         env:
           COMMIT_MSG: ${{ github.event.head_commit.message }}
