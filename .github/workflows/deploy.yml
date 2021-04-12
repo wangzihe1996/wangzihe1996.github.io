@@ -1,4 +1,4 @@
-name: Hexo
+name: Hexo Deploy
 
 on:
   push:
@@ -14,42 +14,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout codes
-        uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+      with:
+        submodules: true
 
-      - name: Setup node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
+    # Caching dependencies to speed up workflows.
+    # (GitHub will remove any cache entries that have not been accessed in over 7 days.)
+    - name: Cache node modules
+      uses: actions/cache@v2.1.5
+      id: cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
 
-      - name: Install dependencies
-        run: |
-          sudo apt update
-          sudo apt install pandoc -y
-          npm install hexo-cli -g
-          npm install
+    # Deploy Hexo
+    - name: Deploy
+      id: deploy
+      uses: sma11black/hexo-action@v1.0.4
+      with:
+        deploy_key: ${{ secrets.HEXO_DEPLOY_PRIVATE_KEY }}
+        user_name: github-actions
+        user_email: 41898282+github-actions[bot]@users.noreply.github.com 
+        commit_msg: ${{ github.event.head_commit.message }}
 
-      - name: Setup Deploy Private Key
-        env:
-          HEXO_DEPLOY_PRIVATE_KEY: ${{ secrets.HEXO_DEPLOY_PRIVATE_KEY }}
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa 
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-      - name: Set Git Config
-        run: |
-          git config --global user.name 'wangzihe1996'
-          git config --global user.email 'wingzinker@outlook.com'
-
-      - name: Generate files
-        run: |
-          hexo clean
-          hexo generate
-
-      - name: Deploy blog
-        run: |
-          hexo clean
-          hexo generate
-          hexo deploy
+    # Use the output from the `deploy` step(use for test action)
+    - name: Get the output
+      run: |
+        echo "${{ steps.deploy.outputs.notify }}"
