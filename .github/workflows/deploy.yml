@@ -40,12 +40,12 @@ jobs:
 
       - name: Set Git Config
         run: |
-          git config --global user.name 'wangzihe1996'
-          git config --global user.email 'wingzinker@outlook.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
       - name: Retain Commit History
         run: |
-          git clone https://github.com/wangzihe1996/wangzihe1996.github.io .deploy_git 
+          git clone --branch master git@github.com:wangzihe1996/wangzihe1996.github.io.git .deploy_git 
           cd .deploy_git
           git checkout master
           cd ../
