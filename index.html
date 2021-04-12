@@ -284,7 +284,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -389,7 +389,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -496,7 +496,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -516,7 +516,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.9k</span>
+      <span>4.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -540,7 +540,22 @@
 <h2 id="hhl算法的量子线路图">HHL算法的量子线路图</h2>
 <p><img src="/2019/10/06/quantum-hhl-algorithm/circuit-of-hhl-algorithm.png"></p>
 <p>其对应的latex代码为：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[]&#123;qcircuit&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;ifpdf&#125;</span><br><span class="line"><span class="keyword">\xyoption</span>&#123;all&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\ket</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\vert</span> <span class="params">#1</span> <span class="keyword">\right</span><span class="keyword">\rangle</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\bra</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\langle</span>&#123;<span class="params">#1</span>&#125;<span class="keyword">\right</span><span class="keyword">\vert</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line">	<span class="keyword">\Qcircuit@C</span>=0.7em@R=0.7em &#123;</span><br><span class="line">		<span class="built_in">&amp;</span>          <span class="built_in">&amp;</span>                        <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span>                   <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>         <span class="built_in">&amp;</span><span class="keyword">\mbox</span>&#123;Controlled Rotation&#125; <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;Ancilla <span class="keyword">\ket</span>&#123;0&#125;&#125;   <span class="built_in">&amp;</span><span class="keyword">\qw</span>       <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>                 <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>                <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R&#125; <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>      <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>                 <span class="built_in">&amp;</span><span class="keyword">\meter</span><span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;1&#125;&#125; <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;EigenValue <span class="keyword">\ket</span>&#123;0&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>&#123;/<span class="built_in">^</span>&#123;n&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H<span class="built_in">^</span>&#123;<span class="keyword">\otimes</span> n&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;1&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;FT<span class="built_in">^</span>&#123;<span class="keyword">\dagger</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-1&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;FT&#125;<span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;1&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H<span class="built_in">^</span>&#123;<span class="keyword">\otimes</span> n&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0<span class="built_in">^</span>&#123;<span class="keyword">\otimes</span> n&#125;&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;Input <span class="keyword">\ket</span>&#123;<span class="keyword">\psi</span>&#125;&#125;  <span class="built_in">&amp;</span><span class="keyword">\qw</span>&#123;/<span class="built_in">^</span>&#123;m&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>                 <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;U&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>                <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>      <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>      <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;U&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;<span class="keyword">\hat</span>&#123;x&#125;&#125;&#125;<span class="keyword">\qw</span> </span><br><span class="line">		<span class="keyword">\gategroup</span>&#123;3&#125;&#123;4&#125;&#123;4&#125;&#123;6&#125;&#123;.7em&#125;&#123;--&#125;  <span class="keyword">\gategroup</span>&#123;2&#125;&#123;8&#125;&#123;3&#125;&#123;8&#125;&#123;.7em&#125;&#123;--&#125; <span class="keyword">\gategroup</span>&#123;3&#125;&#123;10&#125;&#123;4&#125;&#123;12&#125;&#123;.7em&#125;&#123;--&#125;<span class="keyword">\\</span></span><br><span class="line">		<span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="keyword">\mbox</span>&#123;Phase Estimation&#125;<span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="keyword">\mbox</span>&#123;Inverse Phase Estimation&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-latex" data-language="latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">&#123;</span><span class="token keyword">article</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>qcircuit<span class="token punctuation">&#125;</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">&#123;</span><span class="token keyword">ifpdf</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\xyoption</span><span class="token punctuation">&#123;</span>all<span class="token punctuation">&#125;</span>
+<span class="token function selector">\newcommand</span><span class="token punctuation">&#123;</span><span class="token function selector">\ket</span><span class="token punctuation">&#125;</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token function selector">\ensuremath</span><span class="token punctuation">&#123;</span><span class="token function selector">\left</span><span class="token function selector">\vert</span> #1 <span class="token function selector">\right</span><span class="token function selector">\rangle</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\newcommand</span><span class="token punctuation">&#123;</span><span class="token function selector">\bra</span><span class="token punctuation">&#125;</span><span class="token punctuation">[</span>1<span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token function selector">\ensuremath</span><span class="token punctuation">&#123;</span><span class="token function selector">\left</span><span class="token function selector">\langle</span><span class="token punctuation">&#123;</span>#1<span class="token punctuation">&#125;</span><span class="token function selector">\right</span><span class="token function selector">\vert</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span>
+	<span class="token function selector">\Qcircuit</span>@C=0.7em@R=0.7em <span class="token punctuation">&#123;</span>
+		<span class="token punctuation">&amp;</span>          <span class="token punctuation">&amp;</span>                        <span class="token punctuation">&amp;</span>        <span class="token punctuation">&amp;</span>                   <span class="token punctuation">&amp;</span>   <span class="token punctuation">&amp;</span>         <span class="token punctuation">&amp;</span><span class="token function selector">\mbox</span><span class="token punctuation">&#123;</span>Controlled Rotation<span class="token punctuation">&#125;</span> <span class="token function selector">\\</span>
+		<span class="token function selector">\lstick</span><span class="token punctuation">&#123;</span>Ancilla <span class="token function selector">\ket</span><span class="token punctuation">&#123;</span>0<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>   <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>       <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>                 <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>     <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>                <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\gate</span><span class="token punctuation">&#123;</span>R<span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>      <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>     <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>                 <span class="token punctuation">&amp;</span><span class="token function selector">\meter</span><span class="token punctuation">&amp;</span><span class="token function selector">\rstick</span><span class="token punctuation">&#123;</span><span class="token function selector">\ket</span><span class="token punctuation">&#123;</span>1<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token function selector">\\</span>
+		<span class="token function selector">\lstick</span><span class="token punctuation">&#123;</span>EigenValue <span class="token function selector">\ket</span><span class="token punctuation">&#123;</span>0<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&#123;</span>/^<span class="token punctuation">&#123;</span>n<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\gate</span><span class="token punctuation">&#123;</span>H^<span class="token punctuation">&#123;</span><span class="token function selector">\otimes</span> n<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\ctrl</span><span class="token punctuation">&#123;</span>1<span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\gate</span><span class="token punctuation">&#123;</span>FT^<span class="token punctuation">&#123;</span><span class="token function selector">\dagger</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\ctrl</span><span class="token punctuation">&#123;</span>-1<span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\gate</span><span class="token punctuation">&#123;</span>FT<span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\ctrl</span><span class="token punctuation">&#123;</span>1<span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\gate</span><span class="token punctuation">&#123;</span>H^<span class="token punctuation">&#123;</span><span class="token function selector">\otimes</span> n<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\rstick</span><span class="token punctuation">&#123;</span><span class="token function selector">\ket</span><span class="token punctuation">&#123;</span>0^<span class="token punctuation">&#123;</span><span class="token function selector">\otimes</span> n<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token function selector">\qw</span> <span class="token function selector">\\</span>
+		<span class="token function selector">\lstick</span><span class="token punctuation">&#123;</span>Input <span class="token function selector">\ket</span><span class="token punctuation">&#123;</span><span class="token function selector">\psi</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>  <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&#123;</span>/^<span class="token punctuation">&#123;</span>m<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>                 <span class="token punctuation">&amp;</span><span class="token function selector">\gate</span><span class="token punctuation">&#123;</span>U<span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>                <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>      <span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span>      <span class="token punctuation">&amp;</span><span class="token function selector">\gate</span><span class="token punctuation">&#123;</span>U<span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token function selector">\qw</span><span class="token punctuation">&amp;</span><span class="token function selector">\rstick</span><span class="token punctuation">&#123;</span><span class="token function selector">\ket</span><span class="token punctuation">&#123;</span><span class="token function selector">\hat</span><span class="token punctuation">&#123;</span>x<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token function selector">\qw</span> 
+		<span class="token function selector">\gategroup</span><span class="token punctuation">&#123;</span>3<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>4<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>4<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>6<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>.7em<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>--<span class="token punctuation">&#125;</span>  <span class="token function selector">\gategroup</span><span class="token punctuation">&#123;</span>2<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>8<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>3<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>8<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>.7em<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>--<span class="token punctuation">&#125;</span> <span class="token function selector">\gategroup</span><span class="token punctuation">&#123;</span>3<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>10<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>4<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>12<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>.7em<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>--<span class="token punctuation">&#125;</span><span class="token function selector">\\</span>
+		<span class="token punctuation">&amp;</span><span class="token punctuation">&amp;</span><span class="token punctuation">&amp;</span><span class="token punctuation">&amp;</span><span class="token function selector">\mbox</span><span class="token punctuation">&#123;</span>Phase Estimation<span class="token punctuation">&#125;</span><span class="token punctuation">&amp;</span><span class="token punctuation">&amp;</span><span class="token punctuation">&amp;</span><span class="token punctuation">&amp;</span><span class="token punctuation">&amp;</span><span class="token punctuation">&amp;</span><span class="token function selector">\mbox</span><span class="token punctuation">&#123;</span>Inverse Phase Estimation<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">document</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/10/06/quantum-hhl-algorithm/#more" rel="contents">
@@ -605,7 +620,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -723,7 +738,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -846,7 +861,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -969,7 +984,7 @@ H^{\otimes n}|0\rangle = \sum_{x=0}^{2^{n}-1}\frac{|x\rangle}{\sqrt{2^{n}}}
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1079,7 +1094,7 @@ H^{\otimes n}|0\rangle = \sum_{x=0}^{2^{n}-1}\frac{|x\rangle}{\sqrt{2^{n}}}
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1184,7 +1199,7 @@ H^{\otimes n}|0\rangle = \sum_{x=0}^{2^{n}-1}\frac{|x\rangle}{\sqrt{2^{n}}}
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1204,7 +1219,7 @@ H^{\otimes n}|0\rangle = \sum_{x=0}^{2^{n}-1}\frac{|x\rangle}{\sqrt{2^{n}}}
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>1.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -1287,7 +1302,7 @@ H^{\otimes n}|0\rangle = \sum_{x=0}^{2^{n}-1}\frac{|x\rangle}{\sqrt{2^{n}}}
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-13 00:18:55" itemprop="dateModified" datetime="2021-04-13T00:18:55+08:00">2021-04-13</time>
+        <time title="修改时间：2021-04-13 00:51:52" itemprop="dateModified" datetime="2021-04-13T00:51:52+08:00">2021-04-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1307,7 +1322,7 @@ H^{\otimes n}|0\rangle = \sum_{x=0}^{2^{n}-1}\frac{|x\rangle}{\sqrt{2^{n}}}
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
+      <span>2.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
