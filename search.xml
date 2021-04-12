@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>古剑3体验</title>
+    <url>/2019/10/06/impression-of-gujian3/</url>
+    <content><![CDATA[<h2 id="初玩时">初玩时</h2>
+<ul>
+<li>打斗方面，体验确实比其他仙剑古剑要好很多，手柄玩家表示还不错</li>
+<li>刚上来就看到晴雪姑娘，主角还是辟邪族，辟邪之骨，这让古剑1玩家情怀满满啊</li>
+<li>打纨绔子弟时居然是从房上跳下来偷袭，主角还带着匕首，当时就感觉，完了，纨绔要被暗杀了（刺客信条）， 结果只是跳下来踹了一脚，emmm，好吧</li>
+<li>战斗结束时会有慢镜头的击杀特写，这点在刺客信条里也是有的，所以不难看出，古剑三有借鉴国外大作的成分，不过，我觉得还好</li>
+<li>不知道古剑三用的是什么引擎，在人物方面也有一点欧洲人的感觉，回头去了解一下</li>
+</ul>
+<span id="more"></span>
+<h2 id="一段时间后">一段时间后</h2>
+<ul>
+<li>我看到岑缨出场时我就觉得她是女主，很经典的男主救女主套路嘛。结果云无月才是女主？还是说这游戏没有官方cp</li>
+<li>为什么普通难度这么难啊，不能安心的一直刷主线，千秋戏挺好玩的</li>
+</ul>
+<h2 id="一周目后">一周目后</h2>
+<ul>
+<li>剧情并不长，但是一周目时间也不短，因为要花很多时间在家园上，做支线也花了不少时间</li>
+<li>男女主发糖的时间很少，不过关于两人的关系，他们自己都说的很清楚了</li>
+<li>本来想挑战一下全成就，发现好麻烦啊，放弃了</li>
+</ul>
+<h2 id="通关很久后">通关很久后</h2>
+<ul>
+<li>这阵子国漫电影以及一些其他国产ACG接触的比较多。我发现古剑3的海底龙宫部分的制作还是相当精心的，即使当时我玩的时候对它并没有这么高的评价。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>游戏</category>
+      </categories>
+      <tags>
+        <tag>古剑3</tag>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Deutsch算法详解</title>
+    <url>/2019/10/06/intorduction-of-deutsch-algorithm/</url>
+    <content><![CDATA[<h1 id="deutsch算法">Deutsch算法</h1>
+<p>假设某函数<span class="math inline">\(f(x)\)</span>，它的定义域是<span class="math inline">\(\{0,1\}^n\)</span> ，即是长度为<span class="math inline">\(n\)</span>的01串，它的值域是<span class="math inline">\(\{0,1\}\)</span>。而且它只可能是两种，一种是常数函数 ，即$x,f(x)=c,c{0,1} <span class="math inline">\(；另一种是平衡函数，即有一半的x，使得\)</span>f(x)=0<span class="math inline">\(，有另一半\)</span>x<span class="math inline">\(，使得\)</span>f(x)=1<span class="math inline">\(。问题就是判断\)</span>f(x)$是常数函数还是平衡函数。</p>
+<p><strong>传统算法</strong>：至少需要<span class="math inline">\(2^{n-1}+1\)</span>次操作，假设验证了<span class="math inline">\(2^{n-1}+1\)</span>个<span class="math inline">\(f(x)\)</span>的值后，都是某一常数c(<span class="math inline">\(c\in \{0,1\}\)</span>)，则可知<span class="math inline">\(f(x)\)</span>是常数函数，否则是平衡函数。</p>
+<p><strong>量子算法</strong>：用Deutsch算法来判断，仅需一次操作即可知<span class="math inline">\(f(x)\)</span>是常数函数还是平衡函数。</p>
+<p><strong>算法线路图</strong>：</p>
+<p><img src="/2019/10/06/intorduction-of-deutsch-algorithm/circuit-of-deutsch-algorithm.png"></p>
+<p>上边输入为<span class="math inline">\(|0\rangle^{\otimes n}\)</span>，下边输入为<span class="math inline">\(|1\rangle\)</span>。</p>
+<p><span class="math display">\[
+|\psi_{0}\rangle=|0\rangle^{\otimes n}|1\rangle
+\]</span></p>
+<p><span class="math display">\[
+H^{\otimes n}|x\rangle=\prod_{i=1}^{n}\frac{1}{\sqrt{2}}\sum_{y_{j}\in \{0,1\}}(-1)^{x_{i}y_{j}}|y_{j}\rangle=\frac{1}{2^{n/2}}\sum_{y=0}^{2^{n}-1}(-1)^{x\cdot y}|y\rangle
+\]</span></p>
+<p>其中，<span class="math inline">\(x\cdot y=x_{1}y_{1}\oplus x_{2}y_{2}\oplus\cdots\oplus x_{n}y_{n}\)</span></p>
+<p><span class="math display">\[
+H^{\otimes n}|0\rangle = \sum_{x=0}^{2^{n}-1}\frac{|x\rangle}{\sqrt{2^{n}}}
+\]</span> 所以<span class="math inline">\(|\psi_{1}\rangle=\sum_{x=0}^{2^{n}-1}\frac{|x\rangle}{\sqrt{2^{n}}}\cdot\frac{|0\rangle -|1\rangle}{\sqrt{2}}\)</span></p>
+<p>经过<span class="math inline">\(U_{f}\)</span>的作用后，<span class="math inline">\(x\)</span>保持不变，<span class="math inline">\(y\)</span>变为<span class="math inline">\(y\oplus f(x)\)</span>。因为<span class="math inline">\(y=\frac{|0\rangle -|1\rangle}{\sqrt{2}}\)</span>，所以<span class="math inline">\(y\oplus f(x)=\frac{1}{\sqrt{2}}(|f(x)\rangle-|1\oplus f(x)\rangle)\)</span>。当<span class="math inline">\(f(x)=0\)</span>时，<span class="math inline">\(y\oplus f(x)=\frac{1}{\sqrt{2}}(|0\rangle-|1\rangle)\)</span>；当<span class="math inline">\(f(x)=1\)</span>时，<span class="math inline">\(y\oplus f(x)=\frac{1}{\sqrt{2}}(|1\rangle-|0\rangle)=-\frac{1}{\sqrt{2}}(|0\rangle-|1\rangle)\)</span>。所以<span class="math inline">\(y\oplus f(x)=(-1)^{f(x)}|y\rangle\)</span>。</p>
+<p>所以<span class="math inline">\(|\psi_{2}\rangle=\sum_{x=0}^{2^{n}-1}\frac{(-1)^{f(x)}}{\sqrt{2^{n}}}|x\rangle\cdot\frac{|0\rangle-|1\rangle}{\sqrt{2}}\)</span>。</p>
+<p>再经过一次Hadamard变换，<span class="math inline">\(|\psi_{3}\rangle=\frac{1}{2^{n}}\sum_{x=0}^{2^{n}-1}(-1)^{f(x)}\sum_{y=0}^{2^{n}-1}(-1)^{x\cdot y}|y\rangle\cdot\frac{|0\rangle-|1\rangle}{\sqrt{2}}=\frac{1}{2^{n}}\sum_{x=0}^{2^{n}-1}\sum_{y=0}^{2^{n}-1}(-1)^{f(x)+x\cdot y}|y\rangle \cdot\frac{|0\rangle-|1\rangle}{\sqrt{2}}\)</span>。</p>
+<p>然后只需测量上边部分，如果测量结果为<span class="math inline">\(|0\rangle^{\otimes n}\)</span>，则是常数函数，否则是对称函数。</p>
+<span id="more"></span>
+<p><strong>原理如下</strong>：</p>
+<p>对于<span class="math inline">\(|\psi_{3}\rangle\)</span>，只考虑前n个qubit，则是<span class="math inline">\(\frac{1}{2^{n}}\sum_{x=0}^{2^{n}-1}\sum_{y=0}^{2^{n}-1}(-1)^{f(x)+x\cdot y}|y\rangle=\frac{1}{2^{n}}\sum_{x=0}^{2^{n}-1}(-1)^{f(x)}\sum_{y=0}^{2^{n}-1}(-1)^{x\cdot y}|y\rangle\)</span>。</p>
+<p>当<span class="math inline">\(f(x)\)</span>是常数函数的时候，考虑<span class="math inline">\(y=0\)</span>的部分，<span class="math inline">\(x\cdot y=0,(-1)^{x\cdot y}=1\)</span>，所以其系数为<span class="math inline">\(\pm 1\)</span>。因为系数的平方的和为1，所以其他态的系数为0。或者对于<span class="math inline">\(y\neq 1\)</span>时，则<span class="math inline">\(y\)</span>至少有一位为1，不妨假设<span class="math inline">\(y_{i}=1\)</span>，当<span class="math inline">\(x\)</span>从0求和到<span class="math inline">\(2^{n}-1\)</span>时，有一半的<span class="math inline">\(x_{i}\)</span>为0，有一半<span class="math inline">\(x_{i}\)</span>为1。因为<span class="math inline">\((-1)^{a\oplus b}=(-1)^{a}\cdot (-1)^{b}\)</span>，所以<span class="math inline">\((-1)^{x_{i}\oplus y_{i}}\)</span>的和为0。当有多个<span class="math inline">\(y_{i}\)</span>为1时，也是同样道理。所以其前n个qubit为<span class="math inline">\(|0\rangle\)</span>。</p>
+<p>当<span class="math inline">\(f(x)\)</span>是平衡函数时，由常数函数的情况可知，对于<span class="math inline">\(y=0\)</span>的部分，<span class="math inline">\(x\cdot y=0,(-1)^{x\cdot y}=1\)</span>，而因为<span class="math inline">\((-1)^{f(x)}\)</span>有一半为1，有一半为-1，所以其系数为0。所以对上边的输入进行测量不可能测量到<span class="math inline">\(|0\rangle ^{\otimes n}\)</span>。</p>
+]]></content>
+      <categories>
+        <category>量子计算</category>
+      </categories>
+      <tags>
+        <tag>Deutsch算法</tag>
+        <tag>量子计算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比特币初探</title>
+    <url>/2019/10/06/introduction-of-bitcoin/</url>
+    <content><![CDATA[<p>因最近需要做一个比特币入门的presentation，所以来简单记录下我对这方面的理解。</p>
+<h2 id="比特币定义">比特币定义</h2>
+<blockquote>
+<p>比特币（英语：Bitcoin，缩写：BTC 或者 XBT）被部分人点认为是一种去中心化，非普遍全球可支付的电子加密货币，而多数国家则认为比特币属于虚拟商品，并非货币。比特币由中本聪（又译中本哲史）（化名）于2009年1月3日，基于无国界的对等网络，用共识主动性开源软件发明创立。 —— [<a href="https://zh.wikipedia.org/zh-cn/比特币">维基百科</a>]</p>
+</blockquote>
+<h2 id="比特币基本原理">比特币基本原理</h2>
+<h3 id="非对称加密rsa">非对称加密（RSA）</h3>
+<p>传统的对称加密算法，加密与解密都使用相同的密钥。所以如果你有其密钥，你就获得其密文中的信息。</p>
+<p>非对称加密算法，有两个密钥，一个是公开密钥（公钥），另一个是私有密钥（私钥），二者具有一一对应的关系。加密方式和解密方式是公开的，公钥用于将原文加密为密文，是公开的，所有人都可以知道。</p>
+<p>RSA的安全性在于，私钥掌握在用户手里，只有拥有私钥的人才能够对密文解密，而且也无法通过公钥来得到私钥。这样即使有人窃取了传输信息也无法进行解密，从而保证了传输的安全性。 即：<strong>f(原文,公钥)=密文，f(密文,私钥)=原文。</strong></p>
+<p>在这种方式下，A想要给B发送信息，只需将所发送的信息用B的公钥进行加密即可，这样就保证了除B之外的其他人均无法知道信息的原内容。</p>
+<h3 id="数字签名">数字签名</h3>
+<p>数字签名是将公钥密码反过来使用。</p>
+<p>A把自己的签名用私钥进行加密，然后发送给B。B通过A的公钥进行解密得到了其数字签名，B因此可以确信，这个信息确实是A所发送的。 即：<strong>f(签名,私钥)=密文，f(密文,公钥)=原文。</strong></p>
+<h3 id="比特币钱包">比特币钱包</h3>
+<p>每个用户在网上都拥有一对自己的公钥和私钥，根据公钥来生成自己的一个地址。 A想要支付10比特币给B。即A想生成一条这样的交易记录。A只需要提供交易数额（10）、本次交易的双方地址，A的公钥，A的数字签名。我们根据A的公钥可以得到A的地址，进行验证后可以确认A的公钥是否正确，然后用A的公钥去确定数字签名是否正确，从而确定此条交易是否确实是由A发出。</p>
+<span id="more"></span>
+<h2 id="交易记录区块链">交易记录——区块链</h2>
+<h3 id="区块链简介">区块链简介</h3>
+<p>比特币的原理保证了交易的真实性，但这还没有完成。交易数据必须写入数据库之后，才算成立，对方才能真正收到钱。比特币所使用的数据库就是<strong>区块链(block chain)</strong>。</p>
+<figure>
+<img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017122705.png" alt="block-chain"><figcaption>block-chain</figcaption>
+</figure>
+<p>如图所示，区块链便是由这一个个区块构成的链表，每个区块可以存储一定量的交易条目，它们按照<strong>交易的时间顺序</strong>进行排列。这是一个分布式的数据库，并不只存储于某个服务器上，任何人都可以查看它或者得到它的副本。</p>
+<p>每当一笔交易产生后，它就会被传到网络中，然后矿工会发现这些交易，并由矿工将此交易发布到区块链中，其他矿工验证交易，验证通过后，写入各自的数据库中。</p>
+<p><strong>区块链的去中心化就在于它可以由任何人（矿工）进行添加，而无需一个专门的管理员或者管理机构。</strong></p>
+<p>比特币的协议规定：挖到新区块的矿工将获得奖励，全网平均10分钟诞生一个区块（这个条件可以由比特币的内部设定来保证如此），区块的大小只有 1MB，最多只能包含2000多笔交易，也就是说，比特币网络每10分钟，最多只能处理2000多笔交易，相当于处理速度为3～5笔/秒。</p>
+<p>由于挖到新区块的矿工将会获得奖励，且每比交易可以附加一定的手续费，这个手续费会被矿工得到，这些便是矿工可以得到的奖励。区块回报每产出21万个区块减半一次，大约4年减半一次，最开始（2008年）是50个比特币。显然这个等比数列的和是有限的，到2140年时，将不再有新的比特币产生。而在这之后，矿工们就只能通过手续费获得收入。</p>
+<h3 id="区块链是否会有问题">区块链是否会有问题</h3>
+<h4 id="会不会有人交易造假">会不会有人交易造假</h4>
+<p>根据比特币的原理，一笔交易在产生后并不会立刻生效，而是需要写入区块链数据库中才能生效，那在这个过程中，是否会有错误可以出现呢？</p>
+<p>比如A现有1个比特币，它先产生“A支付１个比特币给B”，紧接着，由于这个交易还没有立刻生效，A又产生“A支付1个比特币给C”。</p>
+<p>根据逻辑来说，这两个交易并不能都成立，根据区块链的原理，到底哪个交易最后会被写入区块链数据库，需要大概一小时后才能确认。也就是说，一个小时前的交易通常是被认为可信的。</p>
+<h4 id="会不会有人修改之前的记录">会不会有人修改之前的记录</h4>
+<p>由于区块链是去中心化的，任何人都可以管理。那有没有可能有人修改之前的记录，从而更改自己的余额或者交易呢？</p>
+<p>从理论来说，这是可能发生的，但从实际来说，是几乎不会发生的。区块链是一个一个的区块链接起来，但每个区块会通过一种数学方式来保存之前区块的所有信息。这使得如果你要修改某个区块上的交易，它后面的所有区块全都要修改。而新建一个区块所耗费的时间又是很长的。所以除非<strong>掌握全网51%的算力</strong>，否则是无法做到修改之前的记录的。</p>
+<p>因此，在常规情况下，区块链中所存储的交易记录是不可修改的，而且所有人都可以查看它。</p>
+<h3 id="共识机制">共识机制</h3>
+<p>上面所说的修改记录的问题就是区块链的<strong>共识机制</strong>。比特币中采用的是<strong>工作量证明</strong>(Proof-of-Work)。这种共识机制在客观上保证了网络中的区块链账本是真实有效的数据。</p>
+<h2 id="总结">总结</h2>
+<p>比特币与区块链的性质：</p>
+<ul>
+<li>非对称加密算法保证了比特币交易的真实性</li>
+<li>比特币的总量是有限的</li>
+<li>比特币的交易速度是受限的</li>
+<li>区块链是去中心化的，没有管理员。</li>
+<li>区块链的共识机制保证了其之前的记录无法被修改</li>
+</ul>
+<p>以上便是我总结的比特币与区块链的基本原理，才疏学浅，错漏之处，还望指正。</p>
+]]></content>
+      <categories>
+        <category>bitcoin</category>
+      </categories>
+      <tags>
+        <tag>bitcoin</tag>
+        <tag>blockchain</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hugo静态网站部署到GitHub Pages并实现多平台更新</title>
+    <url>/2019/10/06/introduction-of-building-hugo-website/</url>
+    <content><![CDATA[<p>本文作为<a href>hugo静态网站搭建记录</a>的进阶版，主要是考虑到了多平台的问题。由于我们没有自己的服务器，网站托管在Github上，如何在其他平台上更新自己的网站就成为了一个问题。因此按照<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">官网的指导</a>，写了本篇文章，把网站的源代码文件和可执行文件都存储到GitHub的仓库中。当我们更换了一个平台时，只需把源代码文件从GitHub上pull下来（二进制文件作为该仓库的子模块），即可写文章并推送到博客上。</p>
+<span id="more"></span>
+<p>如果你还没有了解过hugo，建议先看我之前的文章。</p>
+<p>首先，在github中建立两个名为<code>blog</code>和<code>xxx.github.io</code>的仓库，前者用来存储源代码文件，后者用来存储可执行文件。</p>
+<p>网站的生成命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hugo new site blog</span><br><span class="line">cd blog</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:wangzihe1996/blog.git</span><br><span class="line">git pull origin master</span><br><span class="line">git clone https://github.com/spf13/hyde.git themes/hyde</span><br><span class="line">hugo new about.md</span><br><span class="line">hugo new post/test.md</span><br></pre></td></tr></table></figure>
+<p>在<code>about.md</code>和<code>test.md</code>中添加一些内容用来测试，同时设置draft为false。</p>
+<p>修改<code>config.toml</code>配置文件，修改第一行baseURL为<code>baseURL = "http://xxx.github.io/"</code>，并添加一行<code>theme = "hyde"</code>，更多配置可以参考<a href="https://themes.gohugo.io/hyde/">Hyde主题的首页</a></p>
+<p>然后使用<code>hugo server</code>命令，来生成网站，打开<code>localhost:1313</code>来查看有没有问题，测试没有问题后，用<code>ctrl+c</code>来终止测试。</p>
+<p>然后把网站的源代码文件和可执行文件推送到GitHub的仓库中。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /c/hugo/blog</span><br><span class="line">git submodule add -b master git@github.com:wangzihe1996/wangzihe1996.github.io.git public</span><br><span class="line">hugo</span><br><span class="line">cd public</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;init&amp;example&quot;</span><br><span class="line">git push -u origin master</span><br><span class="line">cd ..</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;init&amp;example&quot;</span><br><span class="line">git push --recurse-submodules=check -u origin master</span><br></pre></td></tr></table></figure>
+<p>以后的日常推送为：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /c/hugo/blog</span><br><span class="line">hugo</span><br><span class="line">cd public</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git push -u origin master</span><br><span class="line">cd ..</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git push --recurse-submodules=check -u origin master</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hugo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>量子傅里叶变换(QFT)</title>
+    <url>/2019/10/06/quantum-fourier-transform/</url>
+    <content><![CDATA[<h2 id="离散傅里叶变换dft">离散傅里叶变换(DFT)</h2>
+<p>对于N点序列<span class="math inline">\(\{x[n]\},0\leq n&lt;N\)</span>，其DFT为：<span class="math inline">\(\hat{x}[k]=\sum_{n=0}^{N-1}e^{-i\frac{2\pi}{N}nk}x[n],k=0,1,\ldots,N-1\)</span>，记为<span class="math inline">\(\hat{x}=\mathcal{F}\{x\}\)</span>，其逆DFT为：<span class="math inline">\(x[n]=\frac{1}{N}\sum_{k=0}^{N-1}e^{i\frac{2\pi}{N}nk}\hat{x}[k],n=0,1,\ldots,N-1\)</span>，记为<span class="math inline">\(x=\mathcal{F}^{-1}\{\hat{x}\}\)</span>。</p>
+<p>将DFT和逆DFT两个式子的两边分别乘<span class="math inline">\(\sqrt{N}\)</span>，得<span class="math inline">\((\sqrt{N}\hat{x}[k])=\sum_{n=0}^{N-1}e^{-i\frac{2\pi}{N}nk}(\sqrt{N}x[n]),k=0,1,\ldots,N-1\)</span>与<span class="math inline">\((\sqrt{N}x[n])=\frac{1}{N}\sum_{k=0}^{N-1}e^{i\frac{2\pi}{N}nk}(\sqrt{N}\hat{x}[k]),n=0,1,\ldots,N-1\)</span>。</p>
+<p>整理可得：<span class="math inline">\(\hat{x}[k]=\frac{1}{\sqrt{N}}\sum_{n=0}^{N-1}e^{-i\frac{2\pi}{N}nk}(\sqrt{N}x[n]),k=0,1,\ldots,N-1\)</span>与<span class="math inline">\((\sqrt{N}x[n])=\frac{1}{\sqrt{N}}\sum_{k=0}^{N-1}e^{i\frac{2\pi}{N}nk}\hat{x}[k],n=0,1,\ldots,N-1\)</span>。</p>
+<p>换元可得：逆DFT：<span class="math inline">\(x_{k}=\frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}y_{j}e^{-2\pi ijk/N}\)</span>与DFT：<span class="math inline">\(y_{k}=\frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}x_{j}e^{2\pi ijk/N}\)</span>，其中<span class="math inline">\(k=0,1,\ldots,N-1\)</span>。</p>
+<h2 id="量子傅里叶变换qft">量子傅里叶变换(QFT)</h2>
+<p>即用量子线路实现DFT：<span class="math inline">\(\hat{f}(k)=\frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}f(j)e^{2\pi ijk/N},\, k=0,1,\ldots,N-1\)</span>。</p>
+<p>用量子态表示DFT为：<span class="math inline">\(|\hat{\psi}\rangle=\mathcal{F}(|\psi\rangle),\, |\hat{\psi}\rangle=\sum_{k=0}^{2^{n}-1}\hat{f}(k)|k\rangle,\, |\psi\rangle=\sum_{j=0}^{2^{n}-1}f(j)|j\rangle,\, 2^{n}=N\)</span>。</p>
+<p>若<span class="math inline">\(\mathcal{F}(|j\rangle)=\frac{1}{\sqrt{2^{n}}}\sum_{k=0}^{2^{n}-1}e^{2\pi ijk/2^{n}}|k\rangle\)</span>，则</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+|\hat{\psi}\rangle &amp; = \mathcal{F}(|\psi\rangle) \\
+&amp; =\sum_{j=0}^{2^{n}-1}f(j)\mathcal{F}(|j\rangle) \\
+&amp;=\frac{1}{\sqrt{2^{n}}}\sum_{j=0}^{2^{n-1}}f(j)\sum_{k=0}^{2^{n}-1}\exp(2\pi ijk/2^{n})|k\rangle \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\sum_{k=0}^{2^{n}-1}(\sum_{j=0}^{2^{n}-1}\exp(2\pi ijk/2^{n})f(j)) |k\rangle \\
+&amp; =\sum_{k=0}^{2^{n}-1}\hat{f}(k)|k\rangle
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>所以QFT为：<span class="math inline">\(\mathcal{F}(|j\rangle)=\frac{1}{\sqrt{2^{n}}}\sum_{k=0}^{2^{n}-1}e^{2\pi ijk/2^{n}}|k\rangle\)</span>。</p>
+<span id="more"></span>
+<h2 id="qft的张量积形式">QFT的张量积形式</h2>
+<p>首先定义<span class="math inline">\(j\)</span>的二进制表示，<span class="math inline">\(j=j_{n-1}j_{n-2}\ldots j_{0}=j_{n-1}2^{n-1}+j_{n-2}2^{n-2}+\ldots+j_{0}2^{0}\)</span>，对于小数来说，<span class="math inline">\(0.j_{l}j_{l+1}\ldots j_{m}=\frac{1}{2}j_{l}+\frac{1}{2^{2}}j_{l+1}+\ldots +\frac{1}{2^{m-l+1}}j_{m}\)</span>。</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\mathcal{F}(|j\rangle) &amp; =\frac{1}{\sqrt{2^{n}}}\sum_{k=0}^{2^{n}-1}e^{2\pi ijk/2^{n}}|k\rangle \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\sum_{k_{n-1}=0}^{1}\ldots\sum_{k_{0}=0}^{1}\exp(2\pi ij\sum_{l=1}^{n}\frac{k_{n-l}}{2^{l}})|k_{n-1}\ldots k_{0}\rangle \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\sum_{k_{n-1}=0}^{1}\ldots\sum_{k_{0}=0}^{1}\otimes_{l=1}^{n}\exp(2\pi ij\frac{k_{n-l}}{2^{l}})|k_{n-l}\rangle \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\otimes_{l=1}^{n}[\sum_{k_{n-l}=0}^{1}\exp(2\pi ij\frac{k_{n-l}}{2^{l}})|k_{n-l}\rangle] \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\otimes_{l=1}^{n}[|0\rangle+\exp(2\pi ij\frac{1}{2^{l}})|1\rangle] \\
+&amp; =\frac{1}{\sqrt{2^{n}}}(|0\rangle+e^{2\pi i0.j_{0}}|1\rangle)\otimes(|0\rangle+e^{2\pi i0.j_{1}j_{0}}|1\rangle)\otimes\ldots\otimes(|0\rangle+e^{2\pi i0.j_{n-1}j_{n-2}\ldots j_{0}}|1\rangle)
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>所以QFT的张量积形式为：<span class="math inline">\(\frac{1}{\sqrt{2^{n}}}(|0\rangle+e^{2\pi i0.j_{0}}|1\rangle)\otimes(|0\rangle+e^{2\pi i0.j_{1}j_{0}}|1\rangle)\otimes\ldots\otimes(|0\rangle+e^{2\pi i0.j_{n-1}j_{n-2}\ldots j_{0}}|1\rangle)\)</span>。</p>
+<p>解释推导过程的两个问题：</p>
+<ol type="1">
+<li><span class="math inline">\(\otimes\)</span>本质是一个连乘的符号，所以可以与<span class="math inline">\(\sum\)</span>调换位置。</li>
+<li>推导过程中，第五行到第六行。因为<span class="math inline">\(j\frac{1}{2^{l}}=j_{n-1}\ldots j_{l+1}.j_{l}\ldots j_{0}\)</span>，<span class="math inline">\(\exp(2\pi ij\frac{1}{2^{l}})=\exp(2\pi ij_{n-1}\ldots j_{l+1})*\exp(2\pi i0.j_{l}\ldots j_{0})\)</span>，即把<span class="math inline">\(j\)</span>拆分为整数部分和小数部分，整数部分是1，所以可以省略，只有小数部分有效。</li>
+</ol>
+<h2 id="qft的量子线路模型">QFT的量子线路模型</h2>
+<p>假设一个量子门<span class="math inline">\(R_{k}=\begin{bmatrix}1&amp;0\\0&amp;\exp(\frac{2\pi i}{2^{k}})\end{bmatrix}\)</span>，显然<span class="math inline">\(R_{k}\)</span>是一个酉变换。</p>
+<p><img src="/2019/10/06/quantum-fourier-transform/circuit-of-qft.jpg"></p>
+<p>首先，有<span class="math inline">\(e^{2\pi i0,j_{0}}=e^{\pi ij_{0}}=\left\{\begin{array}{ll}1&amp;j_{0}=0\\-1&amp;j_{0}=1\end{array} \right.\)</span>，所以<span class="math inline">\(|0\rangle+e^{2\pi i0,j_{0}}|1\rangle=\left\{\begin{array}{ll}|0\rangle+|1\rangle&amp;j_{0}=0\\|0\rangle-|1\rangle&amp;j_{0}=1\end{array} \right.\)</span>，所以用H门即可实现这个变换。</p>
+<p>接下来，<span class="math inline">\(e^{2\pi i0.j_{x}\ldots j_{0}}=e^{2\pi i0.j_{x}}*e^{2\pi i0.0j_{x-1}\ldots j_{0}}\)</span>，可以看出，这一项只与前x个量子位有关。对于<span class="math inline">\(e^{2\pi i0.j_{x}}\)</span>，如前文所述，用H门可以实现，对于<span class="math inline">\(e^{2\pi i0.0j_{x-1}\ldots j_{0}}\)</span>，使用受控<span class="math inline">\(R_{k}\)</span>门即可得到<span class="math inline">\(j_{k}\)</span>，所以整体线路模型如上图所示。</p>
+<p>QFT量子线路的latex代码为：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[]&#123;qcircuit&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\ket</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\vert</span> <span class="params">#1</span> <span class="keyword">\right</span><span class="keyword">\rangle</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\bra</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\langle</span>&#123;<span class="params">#1</span>&#125;<span class="keyword">\right</span><span class="keyword">\vert</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line">	<span class="keyword">\Qcircuit@C</span>=0.7em@R=0.7em &#123;</span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;j<span class="built_in">_</span>&#123;n-1&#125;&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;2&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;n-1&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>n&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;+e<span class="built_in">^</span>&#123;2<span class="keyword">\pi</span> i0.j<span class="built_in">_</span>&#123;n-1&#125;<span class="keyword">\ldots</span> j<span class="built_in">_</span>&#123;0&#125;&#125;<span class="keyword">\ket</span>&#123;1&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;j<span class="built_in">_</span>&#123;n-2&#125;&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-1&#125;   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span>       <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;n-2&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;n-1&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;+e<span class="built_in">^</span>&#123;2<span class="keyword">\pi</span> i0.j<span class="built_in">_</span>&#123;n-2&#125;<span class="keyword">\ldots</span> j<span class="built_in">_</span>&#123;0&#125;&#125;<span class="keyword">\ket</span>&#123;1&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\vdots</span>&#125;       <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span>            <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\ddots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>              <span class="built_in">&amp;</span>          <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\ddots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>              <span class="built_in">&amp;</span>              <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>      <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span>              <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\vdots</span>&#125; <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;j<span class="built_in">_</span>&#123;1&#125;&#125;&#125;  <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>         <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-3&#125;     <span class="built_in">&amp;</span><span class="keyword">\qw</span>       <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-2&#125;     <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;n-2&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;+e<span class="built_in">^</span>&#123;2<span class="keyword">\pi</span> i0.j<span class="built_in">_</span>&#123;1&#125;j<span class="built_in">_</span>&#123;0&#125;&#125;<span class="keyword">\ket</span>&#123;1&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;j<span class="built_in">_</span>&#123;0&#125;&#125;&#125;  <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>         <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-4&#125; <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-3&#125;     <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-1&#125;     <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;<span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;+e<span class="built_in">^</span>&#123;2<span class="keyword">\pi</span> i0.j<span class="built_in">_</span>&#123;0&#125;&#125;<span class="keyword">\ket</span>&#123;1&#125;&#125;<span class="keyword">\qw</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>量子计算</category>
+      </categories>
+      <tags>
+        <tag>量子计算</tag>
+        <tag>QFT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HHL算法(量子求解线性方程组)</title>
+    <url>/2019/10/06/quantum-hhl-algorithm/</url>
+    <content><![CDATA[<h2 id="hhl算法的目标">HHL算法的目标</h2>
+<p>求解<span class="math inline">\(A\vec{x}=\vec{b}\)</span>，其中<span class="math inline">\(A\)</span>是<span class="math inline">\(n\times n\)</span>的方阵，<span class="math inline">\(\vec{x}\)</span>和<span class="math inline">\(\vec{b}\)</span>都是<span class="math inline">\(n\times1\)</span>的向量。假设矩阵<span class="math inline">\(A\)</span>是厄密的（即<span class="math inline">\(A^{\dagger}=A\)</span>），则矩阵<span class="math inline">\(e^{iAt}\)</span>是酉的（即<span class="math inline">\(AA^{\dagger}=A^{\dagger}A=I\)</span>），同时<span class="math inline">\(A\)</span>和<span class="math inline">\(e^{iAt}\)</span>有相同的特征向量，若<span class="math inline">\(A|u\rangle=\lambda|u\rangle\)</span>，则<span class="math inline">\(e^{iAt}|u\rangle=e^{i\lambda t}|u\rangle\)</span>。本问题中，还需假设<span class="math inline">\(\|\vec{x}\|=1,\|\vec{b}\|=1\)</span>。因为<span class="math inline">\(e^{iAt}\)</span>是酉矩阵，所以它有<span class="math inline">\(n\)</span>个相互正交的特征向量。本问题中，将问题变形为<span class="math inline">\(A|x\rangle=|b\rangle\)</span>，并不完全等同于原问题。</p>
+<p>很多地方笔者并没有完全搞懂，故省略了很多推导过程和证明，后面可能会补充。</p>
+<h2 id="hhl算法的量子线路图">HHL算法的量子线路图</h2>
+<p><img src="/2019/10/06/quantum-hhl-algorithm/circuit-of-hhl-algorithm.png"></p>
+<p>其对应的latex代码为：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[]&#123;qcircuit&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;ifpdf&#125;</span><br><span class="line"><span class="keyword">\xyoption</span>&#123;all&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\ket</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\vert</span> <span class="params">#1</span> <span class="keyword">\right</span><span class="keyword">\rangle</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\bra</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\langle</span>&#123;<span class="params">#1</span>&#125;<span class="keyword">\right</span><span class="keyword">\vert</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line">	<span class="keyword">\Qcircuit@C</span>=0.7em@R=0.7em &#123;</span><br><span class="line">		<span class="built_in">&amp;</span>          <span class="built_in">&amp;</span>                        <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span>                   <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>         <span class="built_in">&amp;</span><span class="keyword">\mbox</span>&#123;Controlled Rotation&#125; <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;Ancilla <span class="keyword">\ket</span>&#123;0&#125;&#125;   <span class="built_in">&amp;</span><span class="keyword">\qw</span>       <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>                 <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>                <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R&#125; <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>      <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>                 <span class="built_in">&amp;</span><span class="keyword">\meter</span><span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;1&#125;&#125; <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;EigenValue <span class="keyword">\ket</span>&#123;0&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>&#123;/<span class="built_in">^</span>&#123;n&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H<span class="built_in">^</span>&#123;<span class="keyword">\otimes</span> n&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;1&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;FT<span class="built_in">^</span>&#123;<span class="keyword">\dagger</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-1&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;FT&#125;<span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;1&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H<span class="built_in">^</span>&#123;<span class="keyword">\otimes</span> n&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0<span class="built_in">^</span>&#123;<span class="keyword">\otimes</span> n&#125;&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;Input <span class="keyword">\ket</span>&#123;<span class="keyword">\psi</span>&#125;&#125;  <span class="built_in">&amp;</span><span class="keyword">\qw</span>&#123;/<span class="built_in">^</span>&#123;m&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>                 <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;U&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>                <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>      <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>      <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;U&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;<span class="keyword">\hat</span>&#123;x&#125;&#125;&#125;<span class="keyword">\qw</span> </span><br><span class="line">		<span class="keyword">\gategroup</span>&#123;3&#125;&#123;4&#125;&#123;4&#125;&#123;6&#125;&#123;.7em&#125;&#123;--&#125;  <span class="keyword">\gategroup</span>&#123;2&#125;&#123;8&#125;&#123;3&#125;&#123;8&#125;&#123;.7em&#125;&#123;--&#125; <span class="keyword">\gategroup</span>&#123;3&#125;&#123;10&#125;&#123;4&#125;&#123;12&#125;&#123;.7em&#125;&#123;--&#125;<span class="keyword">\\</span></span><br><span class="line">		<span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="keyword">\mbox</span>&#123;Phase Estimation&#125;<span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="keyword">\mbox</span>&#123;Inverse Phase Estimation&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="hhl的算法解释">HHL的算法解释</h2>
+<p>第一步：相位估计(Phase Estimation)</p>
+<p>首先，有<span class="math inline">\(|b\rangle=\sum_{i=0}^{N-1}b_{i}|i\rangle=\sum_{i=0}^{N-1}\beta_{i}|\mu_{i}\rangle\)</span>，其中<span class="math inline">\(\mu_{i}\)</span>是<span class="math inline">\(A\)</span>（和<span class="math inline">\(e^{iAt}\)</span>）的特征向量。然后，因为<span class="math inline">\(U=e^{iAt}\)</span>是酉的，故可以用Hamiltonian simulation来制备<span class="math inline">\(U\)</span>门。</p>
+<p>相位估计的电路图和功能如下：</p>
+<p><img src="/2019/10/06/quantum-hhl-algorithm/gate-of-phase-estimation.png"></p>
+<p>其对应的latex代码为：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[]&#123;qcircuit&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;ifpdf&#125;</span><br><span class="line"><span class="keyword">\xyoption</span>&#123;all&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\ket</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\vert</span> <span class="params">#1</span> <span class="keyword">\right</span><span class="keyword">\rangle</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\bra</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\langle</span>&#123;<span class="params">#1</span>&#125;<span class="keyword">\right</span><span class="keyword">\vert</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line">	<span class="keyword">\Qcircuit@C</span>=0.7em@R=0.7em &#123;</span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;&#125;   <span class="built_in">&amp;</span><span class="keyword">\qw</span>&#123;/<span class="built_in">^</span>&#123;n&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\multigate</span>&#123;1&#125;&#123;PE<span class="built_in">_</span>&#123;U&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;2<span class="built_in">^</span>&#123;n&#125;<span class="keyword">\theta</span>&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;<span class="keyword">\psi</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>&#123;/<span class="built_in">^</span>&#123;m&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ghost</span>&#123;PE<span class="built_in">_</span>&#123;U&#125;&#125;       <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;<span class="keyword">\psi</span>&#125;&#125;<span class="keyword">\qw</span> </span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的实现方式见我的另一篇文章。</p>
+<p>相位估计中，<span class="math inline">\(|\psi\rangle\)</span>是<span class="math inline">\(U\)</span>的特征向量，<span class="math inline">\(U|\psi\rangle=e^{2\pi i\theta}|\psi\rangle\)</span>。输出得到<span class="math inline">\(|2^{n}\theta\rangle\)</span>。本文中，<span class="math inline">\(U=e^{iAt}\)</span>，若<span class="math inline">\(A|\psi\rangle=\lambda|\psi\rangle\)</span>，则<span class="math inline">\(U|\psi\rangle=e^{i\lambda t}|\psi\rangle\)</span>。因此，在相位估计后，若Eigenvalue的值变为<span class="math inline">\(|\hat{\lambda}\rangle\)</span>，则<span class="math inline">\(\hat{\lambda}=2^{n}\frac{\lambda t}{2\pi}\)</span>。因此<span class="math inline">\(\hat{\lambda}\)</span>与<span class="math inline">\(\lambda\)</span>是正比关系。后面就认为<span class="math inline">\(\hat{\lambda}\)</span>是对<span class="math inline">\(\lambda\)</span>的估计。</p>
+<p>相位估计之前，<span class="math inline">\(|\psi\rangle=\sum_{i=0}^{N-1}\beta_{i}|\mu_{i}\rangle\)</span>，因此相位估计后，Input与Eigenvalue变为<span class="math inline">\(\sum_{j=0}^{N-1}\beta_{j}|\mu_{j}\rangle|\lambda_{j}\rangle\)</span>。</p>
+<p>第二步：受控旋转，所有的Qubits变为<span class="math inline">\(\sum_{j=0}^{N-1}\beta_{j}|\mu_{j}\rangle|\lambda_{j}\rangle(\sqrt{1-\frac{C^{2}}{\lambda_{j}}}|0\rangle+\frac{C}{\lambda}|1\rangle)\)</span>。</p>
+<p>第三步：逆相位估计，得到<span class="math inline">\(\sum_{j=0}^{N-1}\beta_{j}|\mu_{j}\rangle|0\rangle(\sqrt{1-\frac{C^{2}}{\lambda_{j}}}|0\rangle+\frac{C}{\lambda}|1\rangle)\)</span></p>
+<p>第四步：对Ancilla进行测量，当得到<span class="math inline">\(|1\rangle\)</span>的时候，Input变为<span class="math inline">\(|\hat{x}\rangle=\frac{1}{N_{x&#39;}}\sum_{j=0}^{N-1}\frac{C}{\lambda_{j}}\beta_{j}|\mu_{j}\rangle\)</span>，与我们想要的<span class="math inline">\(|x\rangle=\sum_{j=0}^{N-1}\beta_{j}\frac{1}{\lambda_{j}}|\mu_{j}\rangle\)</span>成正比关系，故相当于得到了<span class="math inline">\(|x\rangle\)</span>。</p>
+<h2 id="相关证明">相关证明</h2>
+<ol type="1">
+<li><span class="math inline">\(A\)</span>是厄密矩阵，所以<span class="math inline">\(A\)</span>有<span class="math inline">\(n\)</span>个相互正交的特征向量，证明<span class="math inline">\(e^{iAt}\)</span>是酉矩阵。因为A是Hermitian矩阵，所以存在酉矩阵<span class="math inline">\(U\)</span>，使得<span class="math inline">\(D=U^{\dagger}AU\)</span>为实对角阵。由矩阵级数的定义可知，<span class="math inline">\(U^{\dagger}e^{iA}U=e^{iU^{\dagger}AU}=e^{iD}\)</span>，因为<span class="math inline">\(D\)</span>是实对角阵，所以<span class="math inline">\(e^{iD}\)</span>也是实对角阵，特征值形如<span class="math inline">\(e^{i\lambda}\)</span>，其中<span class="math inline">\(\lambda\)</span>是实数（<span class="math inline">\(D\)</span>的对角元，<span class="math inline">\(A\)</span>的特征值）。由欧拉公式可得<span class="math inline">\(e^{i\lambda}=\cos\lambda+i\sin\lambda\)</span>，其复共轭为<span class="math inline">\(\cos\lambda-i\sin\lambda=e^{-i\lambda}\)</span>，所以<span class="math inline">\(e^{iD}\times e^{-iD}=E\)</span>，所以<span class="math inline">\(e^{iD}\)</span>是酉矩阵。所以<span class="math inline">\(e^{iA}=Ue^{iD}U^{\dagger}\)</span>也是酉矩阵。</li>
+</ol>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a href="https://zhidao.baidu.com/question/513908090.html">https://zhidao.baidu.com/question/513908090.html</a></li>
+<li><a href="https://arxiv.org/abs/0811.3171v3">https://arxiv.org/abs/0811.3171v3</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>量子计算</category>
+      </categories>
+      <tags>
+        <tag>量子计算</tag>
+        <tag>QFT</tag>
+        <tag>量子机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>量子相位估计算法</title>
+    <url>/2019/10/06/quantum-phase-estimation/</url>
+    <content><![CDATA[<h1 id="相位估计算法quantum-phase-estimation">相位估计算法(Quantum phase estimation)</h1>
+<h2 id="量子逆傅里叶变换逆qft">量子逆傅里叶变换(逆QFT)</h2>
+<p>数学形式：<span class="math inline">\(f(j)=\frac{1}{\sqrt{N}}\sum_{k=0}^{N-1}\hat{f}(k)\exp(-2\pi ijk/N),\, j=0,1,\ldots,N-1\)</span></p>
+<p>量子态形式：<span class="math inline">\(|\psi\rangle=\mathcal{F}^{-1}(|\hat{\psi}\rangle),\, |\hat{\psi}\rangle=\sum_{k=0}^{2^{n}-1}\hat{f}(k)|k\rangle,\, |\psi\rangle=\sum_{j=0}^{2^{n}-1}f(j)|j\rangle,\, 2^{n}=N\)</span></p>
+<p>若<span class="math inline">\(\mathcal{F}^{-1}(|k\rangle)=\frac{1}{\sqrt{2^{n}}}\sum_{j=0}^{2^{n}-1}\exp(-2\pi ijk/2^{n})|j\rangle\)</span>，则 <span class="math display">\[
+\begin{equation}
+\begin{aligned}
+|\psi\rangle &amp; =\mathcal{F}^{-1}(|\hat{\psi}\rangle) \\
+&amp; =\sum_{k=0}^{2^{n}-1}\hat{f}(k)\mathcal{F}^{-1}(|k\rangle) \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\sum_{k=0}^{2^{n}-1}\hat{f}(k)\sum_{j=0}^{2^{n}-1}\exp(-2\pi ijk/2^{n})|j\rangle \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\sum_{j=0}^{2^{n}-1}(\sum_{k=0}^{2^{n}-1}\hat{f}(k)\exp(-2\pi ijk/2^{n}))|j\rangle \\
+&amp; =\sum_{j=0}^{2^{n}-1}f(j)|j\rangle
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>所以，逆QFT为：<span class="math inline">\(\mathcal{F}^{-1}(|k\rangle)=\frac{1}{\sqrt{2^{n}}}\sum_{j=0}^{2^{n}-1}\exp(-2\pi ijk/2^{n})|j\rangle\)</span></p>
+<span id="more"></span>
+<h2 id="逆qft的张量积形式">逆QFT的张量积形式</h2>
+<p>定义<span class="math inline">\(k\)</span>的二进制表示，<span class="math inline">\(k=k_{n-1}k_{n-2}\ldots k_{0}=k_{n-1}2^{n-1}+k_{n-2}2^{n-2}+\ldots +k_{0}2^{0}\)</span>，对于小数来说，<span class="math inline">\(0.k_{l}k_{l+1}\ldots k_{m}=\frac{1}{2}k_{l}+\frac{1}{2^{2}}k_{l+1}+\ldots +\frac{1}{2^{m-l+1}}k_{m}\)</span>。 <span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\mathcal{F}^{-1}(|k\rangle)&amp; =\frac{1}{\sqrt{2^{n}}}\sum_{j=0}^{2^{n}-1}\exp(-2\pi ijk/2^{n})|j\rangle \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\sum_{j_{n-1}=0}^{1}\ldots\sum_{j_{0}=0}^{1}\exp(-2\pi ik\sum_{l=1}^{n}\frac{j_{n-l}}{2^{l}})|j_{n-1}\ldots j_{0}\rangle \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\sum_{j_{n-1}=0}^{1}\ldots\sum_{j_{0}=0}^{1}\otimes_{l=1}^{n}\exp(-2\pi ik\frac{j_{n-l}}{2^{l}})|j_{n-l}\rangle \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\otimes_{l=1}^{n}[\sum_{j_{n-l}=0}^{1}\exp(-2\pi ik\frac{j_{n-l}}{2^{l}})|j_{n-l}\rangle] \\
+&amp; =\frac{1}{\sqrt{2^{n}}}\otimes_{l=1}^{n}[|0\rangle+\exp(-2\pi ik\frac{1}{2^{l}})|1\rangle] \\
+&amp; =\frac{1}{\sqrt{2^{n}}}(|0\rangle+e^{-2\pi i0.k_{0}}|1\rangle)\otimes(|0\rangle+e^{-2\pi i0.k_{1}k_{0}}|1\rangle)\otimes\ldots\otimes(|0\rangle+e^{-2\pi i0.k_{n-1}k_{n-2}\ldots k_{0}}|1\rangle)
+\end{aligned}
+\end{equation}
+\]</span></p>
+<h2 id="逆qft的量子线路模型">逆QFT的量子线路模型</h2>
+<p>假设量子门<span class="math inline">\(R_{k}^{\dagger}=\begin{bmatrix}1&amp;0\\0&amp;\exp(\frac{-2\pi i}{2^{k}})\end{bmatrix}\)</span>，与QFT类似可得逆QFT的量子线路图。</p>
+<p><img src="/2019/10/06/quantum-phase-estimation/circuit-of-inverse-qft.jpg"></p>
+<p>其latex代码为：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[]&#123;qcircuit&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;ifpdf&#125;</span><br><span class="line"><span class="keyword">\xyoption</span>&#123;all&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\ket</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\vert</span> <span class="params">#1</span> <span class="keyword">\right</span><span class="keyword">\rangle</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\bra</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\langle</span>&#123;<span class="params">#1</span>&#125;<span class="keyword">\right</span><span class="keyword">\vert</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line">	<span class="keyword">\Qcircuit@C</span>=0.7em@R=0.7em &#123;</span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;k<span class="built_in">_</span>&#123;n-1&#125;&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;2&#125;<span class="built_in">^</span>&#123;<span class="keyword">\dagger</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;n-1&#125;<span class="built_in">^</span>&#123;<span class="keyword">\dagger</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;n&#125;<span class="built_in">^</span>&#123;<span class="keyword">\dagger</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;+e<span class="built_in">^</span>&#123;2<span class="keyword">\pi</span> i0.k<span class="built_in">_</span>&#123;n-1&#125;<span class="keyword">\ldots</span> k<span class="built_in">_</span>&#123;0&#125;&#125;<span class="keyword">\ket</span>&#123;1&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;k<span class="built_in">_</span>&#123;n-2&#125;&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-1&#125;   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span>       <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;n-2&#125;<span class="built_in">^</span>&#123;<span class="keyword">\dagger</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;n-1&#125;<span class="built_in">^</span>&#123;<span class="keyword">\dagger</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;+e<span class="built_in">^</span>&#123;2<span class="keyword">\pi</span> i0.k<span class="built_in">_</span>&#123;n-2&#125;<span class="keyword">\ldots</span> k<span class="built_in">_</span>&#123;0&#125;&#125;<span class="keyword">\ket</span>&#123;1&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\vdots</span>&#125;       <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span>            <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\ddots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>              <span class="built_in">&amp;</span>          <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\ddots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>              <span class="built_in">&amp;</span>              <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>      <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span>              <span class="built_in">&amp;</span>        <span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\vdots</span>&#125; <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;k<span class="built_in">_</span>&#123;1&#125;&#125;&#125;  <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>         <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-3&#125;     <span class="built_in">&amp;</span><span class="keyword">\qw</span>       <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-2&#125;     <span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;R<span class="built_in">_</span>&#123;2&#125;<span class="built_in">^</span>&#123;<span class="keyword">\dagger</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;+e<span class="built_in">^</span>&#123;2<span class="keyword">\pi</span> i0.k<span class="built_in">_</span>&#123;1&#125;k<span class="built_in">_</span>&#123;0&#125;&#125;<span class="keyword">\ket</span>&#123;1&#125;&#125;<span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;k<span class="built_in">_</span>&#123;0&#125;&#125;&#125;  <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span>         <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-4&#125; <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>           <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-3&#125;     <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\qw</span>     <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;-1&#125;     <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;<span class="built_in">&amp;</span><span class="keyword">\rstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;+e<span class="built_in">^</span>&#123;2<span class="keyword">\pi</span> i0.k<span class="built_in">_</span>&#123;0&#125;&#125;<span class="keyword">\ket</span>&#123;1&#125;&#125;<span class="keyword">\qw</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="量子相位估计">量子相位估计</h2>
+<p>假设某一酉算符<span class="math inline">\(U\)</span>，它的本征态是<span class="math inline">\(|\psi\rangle\)</span>，且<span class="math inline">\(U|\psi\rangle=\lambda|\psi\rangle\)</span>，即<span class="math inline">\(|\psi\rangle\)</span>对应的本征值是<span class="math inline">\(\lambda\)</span>。量子相位估计即是估计<span class="math inline">\(\lambda\)</span>，不妨假设<span class="math inline">\(\lambda=\exp 2\pi i\theta\)</span>，估计<span class="math inline">\(\theta\)</span>即可估计<span class="math inline">\(\lambda\)</span>。由于<span class="math inline">\(U^{\dagger}U=I\)</span>（<span class="math inline">\(U\)</span>是酉矩阵），所以<span class="math inline">\(\langle\psi|U^{\dagger}U|\psi\rangle=\langle\psi|\psi\rangle\)</span>，<span class="math inline">\(\langle\psi|U^{\dagger}U|\psi\rangle=\langle\psi|\lambda^{*}\lambda|\psi\rangle=|\lambda|^{2}\langle\psi|\psi\rangle\)</span>，所以<span class="math inline">\(|\lambda|^{2}=1\)</span>。故可设<span class="math inline">\(\lambda=\exp(2\pi i\theta),0\leq\theta&lt;1\)</span>，所以，通过估计<span class="math inline">\(\theta\)</span>即可估计<span class="math inline">\(\lambda\)</span>。</p>
+<p>其线路模型如下：</p>
+<p><img src="/2019/10/06/quantum-phase-estimation/circuit-of-phase-estimation.png"></p>
+<p>对应latex代码为：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[]&#123;qcircuit&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;ifpdf&#125;</span><br><span class="line"><span class="keyword">\xyoption</span>&#123;all&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\ket</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\vert</span> <span class="params">#1</span> <span class="keyword">\right</span><span class="keyword">\rangle</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\newcommand</span>&#123;<span class="keyword">\bra</span>&#125;[1]&#123;<span class="keyword">\ensuremath</span>&#123;<span class="keyword">\left</span><span class="keyword">\langle</span>&#123;<span class="params">#1</span>&#125;<span class="keyword">\right</span><span class="keyword">\vert</span>&#125;&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line">	<span class="keyword">\Qcircuit@C</span>=0.7em@R=0.7em &#123;</span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;&#125;   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;  <span class="built_in">&amp;</span><span class="keyword">\qw</span>             <span class="built_in">&amp;</span><span class="keyword">\qw</span>             <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;7&#125;          <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\multigate</span>&#123;4&#125;&#123;<span class="keyword">\mathcal</span>&#123;QFT&#125;<span class="built_in">_</span>&#123;n&#125;<span class="built_in">^</span>&#123;-1&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\meter</span><span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\vdots</span>             <span class="built_in">&amp;</span>          <span class="built_in">&amp;</span>                <span class="built_in">&amp;</span>                <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>      <span class="built_in">&amp;</span><span class="built_in">&amp;</span>                  <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>                                     <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span>   <span class="built_in">&amp;</span><span class="keyword">\vdots</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;&#125;   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;  <span class="built_in">&amp;</span><span class="keyword">\qw</span>             <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;4&#125;        <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>               <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ghost</span>&#123;<span class="keyword">\mathcal</span>&#123;QFT&#125;<span class="built_in">_</span>&#123;n&#125;<span class="built_in">^</span>&#123;-1&#125;&#125;       <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\meter</span><span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;0&#125;&#125;   <span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;H&#125;  <span class="built_in">&amp;</span><span class="keyword">\ctrl</span>&#123;3&#125;        <span class="built_in">&amp;</span><span class="keyword">\qw</span>             <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="keyword">\qw</span>               <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\ghost</span>&#123;<span class="keyword">\mathcal</span>&#123;QFT&#125;<span class="built_in">_</span>&#123;n&#125;<span class="built_in">^</span>&#123;-1&#125;&#125;       <span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\meter</span><span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span> <span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\\</span></span><br><span class="line">		<span class="keyword">\lstick</span>&#123;<span class="keyword">\ket</span>&#123;<span class="keyword">\psi</span>&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span>&#123;/<span class="built_in">^</span>&#123;m&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;U<span class="built_in">^</span>&#123;2<span class="built_in">^</span>&#123;0&#125;&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;U<span class="built_in">^</span>&#123;2<span class="built_in">^</span>&#123;1&#125;&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\cdots</span><span class="built_in">&amp;</span><span class="built_in">&amp;</span><span class="keyword">\gate</span>&#123;U<span class="built_in">^</span>&#123;2<span class="built_in">^</span>&#123;n-1&#125;&#125;&#125;<span class="built_in">&amp;</span><span class="keyword">\qw</span><span class="built_in">&amp;</span><span class="keyword">\qw</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>首先假设<span class="math inline">\(|\psi\rangle\)</span>包含<span class="math inline">\(m\)</span>个量子比特，上半部分初始为<span class="math inline">\(n\)</span>个状态为<span class="math inline">\(|0\rangle\)</span>的量子比特。</p>
+<p>这<span class="math inline">\(n\)</span>个量子比特分别经过H门后变为<span class="math inline">\(\frac{1}{\sqrt{2^{n}}}(|0\rangle+|1\rangle)^{\otimes n}\)</span>。</p>
+<p>对于<span class="math inline">\(U\)</span>门，因为<span class="math inline">\(U|\psi\rangle=\exp(2\pi i\theta)|\psi\rangle\)</span>，所以<span class="math inline">\(U^{2^{j}}|\psi\rangle=U^{2^{j}-1}U|\psi\rangle=U^{2^{j}-1}e^{2\pi i\theta}|\psi\rangle=e^{2\pi i2^{j}\theta}|\psi\rangle\)</span>。</p>
+<p>当<span class="math inline">\(C-U^{2^{j}}\)</span>作用在<span class="math inline">\(\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\otimes|\psi\rangle\)</span>上后，该量子态变为<span class="math inline">\(\frac{1}{\sqrt{2}}(|0\rangle\otimes|\psi\rangle+e^{2\pi i2^{j}\theta}|1\rangle|\psi\rangle)=\frac{1}{\sqrt{2}}(|0\rangle+e^{2\pi i2^{j}\theta}|1\rangle|)\otimes|\psi\rangle\)</span>。</p>
+<p>所以在这些<span class="math inline">\(C-U^{2^{j}}\)</span>门作用完之后，前n个量子比特变为<span class="math inline">\(\frac{1}{\sqrt{2^{n}}}(|0\rangle+e^{2\pi i2^{n-1}\theta}|1\rangle|)\otimes\cdots\otimes(|0\rangle+e^{2\pi i2^{1}\theta}|1\rangle|)\otimes(|0\rangle+e^{2\pi i2^{0}\theta}|1\rangle|)=\frac{1}{\sqrt{2^{n}}}\sum_{k=0}^{2^{n}-1}\exp(2\pi i\theta k)|k\rangle\)</span>。</p>
+<p>对其运用逆QFT之后，变为<span class="math inline">\(\frac{1}{2^{n}}\sum_{j=0}^{2^{n}-1}\sum_{k=0}^{2^{n}-1}e^{2\pi i\theta k}e^{-2\pi i\theta k/2^{n}}|j\rangle=\sum_{j=0}^{2^{n}-1}(\frac{1}{2^{n}}\sum_{k=0}^{2^{n}-1}e^{-2\pi ik(j-2^{n}\theta)})|j\rangle\)</span>。</p>
+<p>整体的量子态在该量子线路作用完后变为：<span class="math inline">\(\sum_{j=0}^{2^{n}-1}(\frac{1}{2^{n}}\sum_{k=0}^{2^{n}-1}e^{-2\pi ik(j-2^{n}\theta)})|j\rangle\otimes|\psi\rangle\)</span>。</p>
+<p>当<span class="math inline">\(\theta\)</span>可以用<span class="math inline">\(n\)</span>位二进制来表示的时候，即<span class="math inline">\(\theta=0.\theta_{n-1}\theta_{n-2}\cdots\theta_{0}\)</span>，因为<span class="math inline">\(j\)</span>取值从<span class="math inline">\(0\)</span>到<span class="math inline">\(2^{n}-1\)</span>，所以<span class="math inline">\(\exists j,j=2^{n}\theta\)</span>，故该状态的系数为<span class="math inline">\(1\)</span>，其他状态的系数为<span class="math inline">\(0\)</span>。所以前<span class="math inline">\(n\)</span>个量子比特变为<span class="math inline">\(|j\rangle\)</span>，故对其测量即可得到<span class="math inline">\(j\)</span>，从而得到<span class="math inline">\(\theta\)</span>。</p>
+]]></content>
+      <categories>
+        <category>量子计算</category>
+      </categories>
+      <tags>
+        <tag>量子计算</tag>
+        <tag>QFT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hugo静态网站搭建记录</title>
+    <url>/2019/10/06/record-of-building-hugo-website/</url>
+    <content><![CDATA[<h2 id="搭建介绍">搭建介绍</h2>
+<p>在Windows10下用hugo和GitHub Pages搭建个人静态网站</p>
+<h2 id="搭建hugo环境">搭建hugo环境</h2>
+<p>在GitHub上下载hugo的压缩包，在<a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a>下载最新版的Windows-64bit.zip即可。我们假设<code>$hugo</code>为hugo所要存放的目录（比如<code>$hugo</code>可以为<code>C:\hugo</code>），将下载的zip压缩包解压到<code>$hugo\bin</code>下，然后把<code>$hugo\bin</code>（本文中的例子为<code>C:\hugo\bin</code>）添加到Windows环境变量的系统变量Path中。</p>
+<p>从<a href="https://git-scm.com/">https://git-scm.com/</a>上下载git bash，并搭建git环境，使得你本机可以通过git bash连接到你的github库，具体步骤可参考其他git和GitHub教程。</p>
+<p>在git bash中输入<code>hugo help</code>，若正常显示<code>hugo</code>的使用指南即表示hugo环境搭建成功。</p>
+<span id="more"></span>
+<h2 id="生成hugo网站">生成hugo网站</h2>
+<p>在git bash中，跳转到<code>$hugo</code>目录下（以下用<code>/c/hugo</code>代替<code>$hugo</code>），即使用命令<code>cd /c/hugo</code>，然后执行<code>hugo new site Sites</code>，即会生成一个名叫<code>Sites</code>的文件夹（你也可以将<code>Sites</code>替换为其它你想使用的文件夹名），里面包括了你的网站。</p>
+<p>由于hugo默认并没有搭载主题，所以需要先使用一款主题才可以成功搭建网站，本文以<a href="https://themes.gohugo.io/hyde/">Hyde</a>主题为例。在目录<code>/c/hugo/Sites/</code>下，使用命令<code>git clone https://github.com/spf13/hyde.git themes/hyde</code>，就把Hyde主题下载到了本地。</p>
+<p>然后在<code>/c/hugo/Sites/config.toml</code>中，修改第一行baseURL为<code>baseURL = "http://xxx.github.io/"</code>，并添加一行<code>theme = "hyde"</code>。</p>
+<p>同时还可以在后面添加网站描述：</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="section">[params]</span></span><br><span class="line">  <span class="attr">description</span> = <span class="string">&quot;Your custom description&quot;</span></span><br></pre></td></tr></table></figure>
+<p>更多配置可以参考<a href="https://themes.gohugo.io/hyde/">Hyde主题的首页</a>。以上，Hyde主题暂时就配置好了。</p>
+<p>然后在目录<code>/c/hugo/Sites/</code>下使用命令<code>hugo new about.md</code>来发布一个页面（发布文章的命令为<code>hugo new post/about.md</code>）。然后在about.md的最后添加一行<code># about me</code>（其他markdown语法的内容也可以，这些就是你要写在这个页面的内容）。这样我们就写好了一个页面。</p>
+<p>然后可以先生成这个网站预览一下<code>hugo server --buildDrafts</code>，其中<code>--buildDrafts</code>作用是生成被标记为【草稿】的文件，因为我们的about.md中有<code>draft: true</code>，表示这篇文章是一个草稿。生成之后可以在浏览器中输入<code>localhost:1313</code>来预览网站，没有问题后，按<code>ctrl+c</code>结束预览。</p>
+<h2 id="推送到github-pages">推送到GitHub Pages</h2>
+<p>首先我们需要把我们想要显示的文章和页面（比如上文的about.md）中的<code>draft: ftrue</code>改为<code>draft: false</code>。</p>
+<p>然后在<code>/c/hugo/Sites/</code>目录下执行命令<code>hugo</code>，此时会生成一个名为public的文件夹，这个文件夹就是我们的网站内容。</p>
+<p>在GitHub中新建<code>xxx.github.io</code>的仓库（<code>xxx</code>为你的GitHub的账户名），然后在Settings中找到Github Pages选项, 将Source改为master branch，最后点击 Save 按钮。这种情况下，该仓库应该为空仓库。</p>
+<p>打开<code>c/hugo/Sites/public</code>，执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:xxx/xxx.github.io.git</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;Initial&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>以上，网站就生成了，过几分钟后访问xxx.github.io，如果访问成功，说明搭建成功。</p>
+<p>之后的日常发布为：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git commit -m &quot;update&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h2 id="番外">番外</h2>
+<p>笔者实践时，因为之前已经搭建过一次静态网站了，该仓库中已经有了内容，所以需要先将其删掉。经实践后，命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /c/hugo/Sites</span><br><span class="line">git clone git@github.com:xxx/xxx.github.io.git</span><br><span class="line">cd xxx.github.io</span><br><span class="line">git rm -rf *</span><br><span class="line">git commit -m &quot;empty&quot;</span><br><span class="line">git push origin master</span><br><span class="line">cd ..</span><br><span class="line">rm -rf xxx.github.io</span><br></pre></td></tr></table></figure>
+<p>通过以上命令，先将仓库的文件都删掉。然后执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /c/hugo/Sites</span><br><span class="line">hugo</span><br><span class="line">cd pubilc</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:xxx/xxx.github.io.git</span><br><span class="line">git pull origin master</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;Initial&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>才能完成网站的搭建。</p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hugo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typecho博客搭建记录</title>
+    <url>/2019/10/06/record-of-building-typecho/</url>
+    <content><![CDATA[<p>博客最终还是从云服务器迁移到了GitHub Pages，框架也从Typecho变成了hugo，这里记录一下Typecho当时的搭建方法吧。</p>
+<p>服务器为ubuntu18，部署环境为lamp(linux+apache+mysql+php)。</p>
+<p>部署步骤：</p>
+<span id="more"></span>
+<ol type="1">
+<li><p>安装ubuntu18系统，在vps提供的系统镜像中选择ubuntu18，然后点击安装即可。</p></li>
+<li><p>搭建lamp环境：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt install tasksel</span><br><span class="line">sudo tasksel install lamp-server</span><br><span class="line">sudo bash -c &quot;echo -e &#x27;&lt;?php\nphpinfo();\n?&gt;&#x27; &gt; /var/www/html/phpinfo.php&quot;</span><br></pre></td></tr></table></figure>
+<p>然后在浏览器中打开你的域名或者ip地址，查看是否有apache的页面，然后再打开你的域名或者ip地址/phpinfo.php，检查其页面是否正常显示。</p>
+<p>以上完成，说明你的lamp搭建好了。</p></li>
+<li><p>设置mysql：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE typecho;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> `username`@`localhost` IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;password&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> typecho.<span class="operator">*</span> <span class="keyword">TO</span> `username`@`localhost`;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure></li>
+<li><p>设置apache：</p>
+<p>保持默认应该就可以，可根据需要设置<code>/etc/apache2/apache2.conf</code>和<code>/etc/apache2/sites-available/</code>中的内容。 删除原有首页<code>rm /var/www/html/index.html</code>，或把<code>/etc/apache2/mods-enabled/dir.conf</code>中的<code>index.php</code>放在<code>index.html</code>之前。</p></li>
+<li><p>安装php相关：</p>
+<p>这一步我也不确定是否为必需操作。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip</span><br></pre></td></tr></table></figure></li>
+<li><p>部署Typecho框架：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget http://typecho.org/downloads/1.1-17.10.30-release.tar.gz</span><br><span class="line">tar -zxvf 1.1-17.10.30-release.tar.gz</span><br><span class="line">mv build/* /var/www/html</span><br><span class="line">rmdir build</span><br></pre></td></tr></table></figure></li>
+<li><p>网站程序安装：</p>
+<p>在浏览器中打开你的域名或者ip地址，</p>
+<figure>
+<img src="http://docs.typecho.org/_media/wiki/install.png?cache=" alt="typecho-install"><figcaption>typecho-install</figcaption>
+</figure>
+<p>然后在其中设置你的各项配置，其中数据库地址为localhost，用户名和密码为你创建的用户名和密码（授予了权限的那个），然后就安装完成了。</p></li>
+<li><p>插件安装：</p>
+<p>官方插件：<a href="https://github.com/typecho/plugins">https://github.com/typecho/plugins</a> 民间插件：<a href="https://github.com/typecho-fans/plugins">https://github.com/typecho-fans/plugins</a> 官方文档中所列的插件：<a href="http://docs.typecho.org/plugins/download">http://docs.typecho.org/plugins/download</a> <strong>注意</strong>：需将插件文件夹（或文件）放在网站目录下的usr/plugins/下才行，文件夹名称要和插件名称相同</p></li>
+</ol>
+<p>以上，即可完成typecho的安装。</p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>typecho</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typecho相关网站</title>
+    <url>/2019/10/06/related-websites-of-typecho/</url>
+    <content><![CDATA[<p>Typecho官网：<a href="http://typecho.org/">http://typecho.org/</a></p>
+<p>Typecho的Github网址：<a href="https://github.com/typecho">https://github.com/typecho</a></p>
+<ol type="1">
+<li>项目本体：<a href="https://github.com/typecho/typecho">https://github.com/typecho/typecho</a></li>
+<li>Typecho官方插件列表：<a href="https://github.com/typecho/plugins">https://github.com/typecho/plugins</a></li>
+</ol>
+<p>TYPECHO WIKI - TYPECHO主题插件资源下载站：<a href="https://www.typecho.wiki/">https://www.typecho.wiki/</a></p>
+<ol type="1">
+<li>主题列表：<a href="https://www.typecho.wiki/category/themes/">https://www.typecho.wiki/category/themes/</a></li>
+<li>插件列表：<a href="https://www.typecho.wiki/category/plugins/">https://www.typecho.wiki/category/plugins/</a></li>
+</ol>
+<p>Typecho主题模板站：<a href="https://typecho.me/">https://typecho.me/</a></p>
+<ol type="1">
+<li>主题列表：<a href="https://typecho.me/">https://typecho.me/</a></li>
+<li>插件列表：<a href="https://plugins.typecho.me/">https://plugins.typecho.me/</a></li>
+<li>插件精选：<a href="https://plugins.typecho.me/plugins.html">https://plugins.typecho.me/plugins.html</a></li>
+</ol>
+<p>Typecho基友团作品：<a href="https://typecho-fans.github.io/">https://typecho-fans.github.io/</a></p>
+<ol type="1">
+<li>主题集群：<a href="https://github.com/typecho-fans/themes">https://github.com/typecho-fans/themes</a></li>
+<li>插件集群：<a href="https://github.com/typecho-fans/plugins">https://github.com/typecho-fans/plugins</a></li>
+</ol>
+<p>Typecho中文网：<a href="https://www.typechodev.com/">https://www.typechodev.com/</a></p>
+<ol type="1">
+<li>主题列表：<a href="https://www.typechodev.com/themes/">https://www.typechodev.com/themes/</a></li>
+<li>插件列表：<a href="https://www.typechodev.com/plugins/all_plugins.html">https://www.typechodev.com/plugins/all_plugins.html</a></li>
+<li>教程：<a href="https://www.typechodev.com/docs/zh_CN/">https://www.typechodev.com/docs/zh_CN/</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>typecho</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>校园网ipv6免流方法</title>
+    <url>/2019/10/06/using-campus-network-free-by-ipv6/</url>
+    <content><![CDATA[<p>前段时间路由器的ipv6有问题，修了几个晚上都没有修好。现在发现它自己又好了，就记录一些自己折腾的一些心得吧。</p>
+<h2 id="适用范围">适用范围</h2>
+<p>校园网收费，需认证登录。但是ipv6可以免费使用。</p>
+<span id="more"></span>
+<h2 id="检查ipv6是否可用">检查ipv6是否可用</h2>
+<ol type="1">
+<li>在网络和共享中心中可以查看自己的状态，查看ipv4连接和ipv6连接是否可用，以及ip地址，在Internet协议版本6中也可以修改dns地址。关于ipv6的dns服务器可以去网上找。</li>
+<li>在cmd中用ipconfig和ipconfig/all也可以查看ipv4和ipv6地址。可以通过ping一些ipv6的网址来检查本机ipv6是否可用。只有ipv6解析的网址：<a href="ipv6.google.com">ipv6.google.com</a>、<a href="ipv6.l.google.com">ipv6.l.google.com</a>、<a href="ipv6.test-ipv6.com">ipv6.test-ipv6.com</a>，以及ipv6解析和ipv4解析都有的网址：<a href="ipv6.tsinghua.edu.cn">ipv6.tsinghua.edu.cn</a>、<a href="ipv6.ustc.edu.cn">ipv6.ustc.edu.cn</a>、<a href="ipv6.sjtu.edu.cn">ipv6.sjtu.edu.cn</a>。注意有些学校虽然有ipv6但是国外的网址（如Google、YouTube等）会屏蔽掉，换句话说也就是，ipv6也已经有墙了。虽然Google等用ipv6可以直连但是你发现自己无法连接，也ping不通。ipv6.test-ipv6.com这个网址目前没有被屏蔽，只有ipv6解析，是一个比较好的检测方式。</li>
+<li>以上说的网址，除了可以检查是否能ping通外，也可以在浏览器中直接打开，看看能不能打开。<a href="test-ipv6.com">test-ipv6.com</a>是一个检查ipv6可用性的网站，但是它的ip地址是ipv4的，所以可以用它的ipv6版本：<a href="ipv6.test-ipv6.com">ipv6.test-ipv6.com</a>。以及北邮人TV：<a href="tv.byr.cn">tv.byr.cn</a>。</li>
+</ol>
+<h2 id="ipv6免流方法">ipv6免流方法</h2>
+<p>在确认本机ipv6可用后，就可以用它来免流了。首先要先拥有一个有ipv6地址的服务器（如vultr、aws和搬瓦工等等）。然后在上面搭建ss/ssr服务器。ssr是经实践可用的，至于ss是否可用可以自行测试。 搭建好ssr服务器后，就可以走代理来免流了。几个平台的免流方法如下：</p>
+<ol type="1">
+<li>Windows平台：下载ssr客户端，然后添加ssr服务器，ip地址写ipv6地址即可。开全局代理后，浏览器可以正常上网，但是其他软件不一定能使用。有些软件可以走代理，有些不能。所以需要把ss作为电脑的全局代理。一种方法是用Proxifier，但是它并不完美，有些软件不一定能使用，而且貌似也不能转发udp。因此可以使用ss-tap这个软件，它本来是为游戏做加速的，但是我们也可以使用，由于官方网站上的https://www.sockscap64.com/zh-hans/sstap/ 是最新版本1.1.0.1，不支持全局代理，因此需要下载最后一个支持全局代理的版本1.0.9.7，这里提供一个下载地址https://github.com/mayunbaba2/SSTap-beta-setup/blob/master/SSTap-beta-setup-1.0.9.7.exe.7z 。安装ss-tap后，由于其本身并不能添加ipv6地址的代理，因此需要本地打开ssr，然后ss-tap中添加本地端口，即类型：socks5，地址：127.0.0.1，端口：1080。如此之后，Windows电脑即可实现全局免流上网（Windows应用商店可能无法打开，原因未知）。</li>
+<li>安卓平台：手机端较为简单，下载ssr客户端后，添加代理服务器，ip地址填ipv6地址即可。连接校园网WiFi后，打开ssr，连接全局代理即可（有时可能需要连接WiFi一段时间后才能正常使用）。</li>
+<li>路由器平台：个人比较喜欢的方式当然是搭一个可以免流的路由器，然后手机电脑平板等设备都可以连到路由器来上网，这种方式也叫透明代理。因此需要有一个支持ipv6和ssr的路由器，然后ssr添加ipv6的代理服务器并选择全局模式即可。使用路由器后，电脑和手机均无需配置即可免流上网，而且一些小问题在这种模式下也不会出现，体验较为良好，当然有兴趣的也可以自己用树莓派搭建。</li>
+</ol>
+<h2 id="更新">更新</h2>
+<p>前阵子迎来了一个小长假，同时由于该时期的特殊性，大量的ssr服务器被封掉，笔者亲测一个新部署的ssr服务器使用不到一天就会被封，因此我怀疑ssr的特征识别率已经很高了，所以我觉得ssr不应该被使用了，可以考虑用v2ray。</p>
+<p>不过比较幸运的一点是，通常只会封ipv4地址，而不会封ipv6地址，即使你的服务器的ipv4地址被封了，ipv6地址大概率还是可用的，因此用ipv6来免流或者科学上网还是有可行性的，当然前提是你本地要有ipv6网络。</p>
+<p>以上就是我折腾校园网免流的一些经验，欢迎交流指正。</p>
+]]></content>
+      <categories>
+        <category>校园网</category>
+      </categories>
+      <tags>
+        <tag>ipv6</tag>
+        <tag>校园网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用Hexo和NexT来搭建Github Pages静态博客</title>
+    <url>/2019/10/12/using-hexo-and-next-to-build-a-blog/</url>
+    <content><![CDATA[<h2 id="为什么选择hexo和next">为什么选择Hexo和NexT</h2>
+<p>前阵子花了不少时间解决了hugo下公式显示的问题，终于把一个博客搭了起来。然后我发现，<strong>不如Hexo+NexT的博客好看</strong>，这是我再一次更换博客框架的原因之一，虽然很多人的博客主题都是NexT导致我已经有些审美疲劳了，但是它确实是一个很简洁优雅的主题。其次，Hexo是目前最流行的静态博客框架，NexT是Hexo中使用人数和star数最多的主题，这两者的功能都异常强大，足以满足我的需要，并且文档以及民间资料都很丰富，绝大部分功能都只需要更改配置文件即可，一小部分需求通过在网上查找别人的方法也能解决。</p>
+<p>hugo作为一个新生的博客框架，虽然它的优点显而易见，但是功能还不够丰富，一个功能比较健全的主题<a href="https://themes.gohugo.io/academic/">Academic</a>不符合我的审美，而且似乎想要配置成功也不太容易。我认为我搭博客的目的是能够方便地总结、记录和分享自己所学所做，而不是每天来手动实现博客的各种功能。因此，我的博客重新使用了Hexo+NexT来搭建。</p>
+<span id="more"></span>
+<h2 id="我安装的npm包">我安装的npm包</h2>
+<ol type="1">
+<li><p>MathJax，<a href="https://theme-next.org/docs/third-party-services/math-equations">使用方法</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></li>
+<li><p>站内搜索(Local Search)，<a href="https://theme-next.org/docs/third-party-services/search-services#Local-Search">使用方法</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure></li>
+<li><p>GitHub部署插件，<a href="https://hexo.io/zh-cn/docs/one-command-deployment#Git">使用方法</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li><p>图片插件，<a href="https://github.com/xcodebuild/hexo-asset-image/">使用方法</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/xcodebuild/hexo-asset-image.git --save</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="hexo无痛使用本地图片">Hexo无痛使用本地图片</h2>
+<p>Hexo的<a href="https://hexo.io/zh-cn/docs/asset-folders">官方文档</a>中提供了几种上传本地图片的方法，但是这种标签插件的方式并不直观，因为它不是Markdown语法，所以图片不能在Typora上显示，而使用<code>source/image</code>文件夹的方法也同样由于路径不同的问题而使得图片不能在Typora上显示。使用<code>post_asset_folder</code>属性和<code>hexo-asset-image</code>插件可以解决这个问题。</p>
+<p>解决方案：首先在Hexo的<code>_config.yml</code>文件中设置<code>post_asset_folder: true</code>，然后安装插件<code>npm install https://github.com/xcodebuild/hexo-asset-image.git --save</code>。由于<code>hexo-asset-image</code>插件有bug，因此需要尝试不同版本来看看哪个版本可以解决问题。</p>
+<p>我的hexo的版本为3.9.0；hexo-cli的版本为3.0.0；操作系统为Windows 10(64bit)；NexT主题的版本为<a href="https://github.com/theme-next/hexo-theme-next/releases/tag/v7.4.1">7.4.1</a>。Hexo的<code>_config.yml</code>的配置中<code>url</code>为https://username.github.io；<code>root</code>)为<code>/</code>；<code>permalink</code>为<code>:year/:month/:day/:title/</code>；<code>permalink_default</code>为空，<code>post_asset_folder</code>为<code>true</code>，其它相关设置为Hexo的默认值。我使用成功的<code>hexo-asset-image</code>版本为<a href="https://github.com/xcodebuild/hexo-asset-image/tree/3c114cf0c0343ab28469635085b225fcae7fb9d3">https://github.com/xcodebuild/hexo-asset-image/tree/3c114cf0c0343ab28469635085b225fcae7fb9d3</a>。</p>
+<p>采用以上方法后，每使用<code>hexo new title</code>时，在生成<code>title.md</code>时也会生成一个名为<code>title</code>的文件夹。你可以把你在<code>title.md</code>中要使用的图片（例如<code>test.jpg</code>）放到title文件夹中。然后在使用相对路径的方法插入该图片<code>![](title/test.jpg)</code>。如此，在生成的静态博客中，该图片会以绝对路径的形式出现，因此不论是在首页还是在文章页面都能正常显示。</p>
+<p>另外，Markdown中插入图片的语法为<code>![Alt text](图片链接 "optional title")</code>，但是在Hexo+NexT下，text似乎也会被显示出来，即使图片显示成功，不太美观，因此<code>Alt text</code>建议不要填写，至于<code>"optional title"</code>，没有测试，并不清楚。</p>
+<blockquote>
+<p>Alt text：图片的Alt标签，用来描述图片的关键词，可以不写。最初的本意是当图片因为某种原因不能被显示时而出现的替代文字，后来又被用于SEO，可以方便搜索引擎根据Alt text里面的关键词搜索到图片。 图片链接：可以是图片的本地地址或者是网址。"optional title"：鼠标悬置于图片上会出现的标题文字，可以不写。</p>
+</blockquote>
+<h2 id="tagsarchivescategories和about">tags、archives、categories和about</h2>
+<p>对于使用<code>hexo new page test</code>建立的页面，会有date和title两者属性，但是title似乎是不需要的，至少<a href="https://github.com/theme-next/hexo-theme-next/releases/tag/v7.4.1">7.4.1</a>版本的NexT主题是不需要的，而且有的话在页面还会额外多一个标题，很不美观。因此可以删掉title属性，同时添加type属性(并不确定type属性是否有效，但是添加后不会产生错误)。</p>
+<p>例如<code>source/tags/index.md</code>可以写成如下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2019-10-09 21:19:36</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<h2 id="分类问题">分类问题</h2>
+<p>Hexo中默认一篇文章只有一个分类属性，不过可以使用父子类别。具体使用方法见Hexo的<a href="https://hexo.io/zh-cn/docs/front-matter#分类和标签">中文文档</a>和<a href="https://hexo.io/docs/front-matter.html#Categories-amp-Tags">英文文档</a>。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Diary</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">PS3</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Games</span></span><br></pre></td></tr></table></figure>
+<p>根据文档中可以知道，单分类的情况如上，<code>categories</code>下只指定一个分类。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Sports</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Baseball</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Injury</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Fight</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Shocking</span></span><br></pre></td></tr></table></figure>
+<p>父子分类的方法如上，Sports分类下还有一个名为Baseball的子分类，这篇文章属于Baseball这个二级分类和Sports这个一级分类。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Sports</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Daily</span>]</span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Injury</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Fight</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Shocking</span></span><br></pre></td></tr></table></figure>
+<p>以上形式可以使用多分类，这篇文章既属于Sports分类又属于Daily分类，而且这两个分类是平行关系。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Sports</span>, <span class="string">Baseball</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">MLB</span>, <span class="string">American</span> <span class="string">League</span>, <span class="string">Boston</span> <span class="string">Red</span> <span class="string">Sox</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">MLB</span>, <span class="string">American</span> <span class="string">League</span>, <span class="string">New</span> <span class="string">York</span> <span class="string">Yankees</span>]</span><br><span class="line"><span class="bullet">-</span> <span class="string">Rivalries</span></span><br></pre></td></tr></table></figure>
+<p>这种形式可以既使用多分类又使用平行分类，这篇文章属于Sports、MLB和Rivalries这三个一级分类，同时属于Sports下的Baseball和MLB下的American League这两个二级分类，同时还属于MLB下的American League下的Boston Red Sox和New York Yankees这两个三级分类。</p>
+<p>如果你遇到空格的显示问题，我觉得把内容用双引号引起来应该会解决问题，例如这样<code>"American League"</code>。</p>
+<p>标签方面，Hexo是支持多标签的，同时标签之间是平行关系，也没有父子关系，所以<code>tags</code>属性正常写就可以啦。</p>
+<h2 id="常用命令">常用命令</h2>
+<ol type="1">
+<li><p>本地查看</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure></li>
+<li><p>部署到GitHub Pages</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="必须联网">必须联网？</h2>
+<p>在前两天的一次使用中无意中发现，似乎是由于某个npm包的原因，即使只使用<code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code>命令在本地查看，也需要联网才行，否则似乎会在<code>hexo g</code>的时候报错。</p>
+<h2 id="多电脑同步">多电脑同步：</h2>
+<p>思路很简单，就是把你的博客源代码文件也上传到GitHub上，可以上传到你的<code>username.github.io</code>的非master分支上，也可以新建一个仓库。考虑到Google Analytics的id等私人信息也会被上传上去，因此可以建立一个private仓库来存源代码。</p>
+<p>其实是Google时找到了<a href="https://segmentfault.com/a/1190000017784822">一篇博客</a>，参考了其中的思路。</p>
+<p>主要有两个问题，一个是你的源代码里的主题和其他插件里都有<code>.git</code>文件和<code>.gitignore</code>文件，<code>.git</code>文件会使得该文件夹的内容不会被同步，应该是GitHub认为这是一份别人的仓库文件吧（事实上也确实是从别人的仓库里clone来的）。<code>.gitignore</code>文件会使得某些文件在同步时被忽略，一些字体文件之类的会在里面，然后你在另一条电脑从GitHub上pull下来后运行时就会发现有问题，缺少文件。</p>
+<p>后来我发现，我的整个博客文件夹才50MB，在9102年，这个体积很小的好嘛，完全上传到GitHub上都没有问题。所以第一个问题的解决方法很简单，在你的源代码文件夹中搜索<code>git</code>，把除了<code>.deploy_git</code>文件夹之外的其它<code>.git</code>文件和<code>.gitignore</code>都删掉。</p>
+<p>第二个问题是node_modules问题，因为下载了一些npm包在博客文件夹中，但是因为文件夹整体大小也很小，所以我觉得，就按上述办法，把它们全部上传也没什么不妥。</p>
+<p>还有就是<code>.deploy_git</code>文件夹，这个是Hexo用来上传博客程序的，你可以把它加到<code>.gitignore</code>里，也可以不管它，反正它的体积也很小。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:username/blog.git</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;init&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>所以就是新建一个private仓库，把博客的源代码上传上去。</p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在hugo中通过使用mathjax来显示公式</title>
+    <url>/2019/10/06/using-latex-in-hugo-by-mathjax/</url>
+    <content><![CDATA[<h2 id="在hugo中通过使用mathjax来显示公式">在hugo中通过使用mathjax来显示公式</h2>
+<p>hugo显示数学公式有两种方式：katex和mathjax。两种方式都很难成功。</p>
+<p>先说结果，只有mathjax成功了，方法见<a href="https://butui.me/post/yet-best-math-formula-support-for-hugo-with-mathjax/">Hugo 静态博客中迄今为止最佳数学公式支持-利用 MathJax &amp; MMark</a>，如果你使用的时候发现并没有完全生效（主要就是<code>_</code>、<code>&amp;</code>和<code>\\</code>会被html渲染）。请查看你采用的主题中是否在其他地方加载了mathjax或者katex，找到它并删掉它就行。</p>
+<p>解决方案：假设你的主题名为<code>hyde</code>，那么你要在<code>themes/hyde/layouts/partials</code>下的<code>head.html</code>或者<code>header.html</code>或者<code>footer.html</code>（我觉得用<code>head.html</code>比较好）中添加一行代码：<code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_SVG"&gt;&lt;/script&gt;</code>。添加位置为倒数第二行，即在<code>&lt;/head&gt;</code>或者<code>&lt;/header&gt;</code>或者<code>&lt;/footer&gt;</code>的前面一行就行。</p>
+<p>当然你也可以用其他的cdn，我觉得cloudflare的速度还算可以，另外MathJax3好像更改了很多东西，不确定是否可用。</p>
+<span id="more"></span>
+<p>另外由于我的主页会集成其他文章的内容，我遇到了一个问题，我的某篇文章中为我用latex生成的一个线路图提供了latex代码，本来这个代码是使用了markdown的代码标记的，但是被集成了之后，通过查看网页源代码发现，由于主页只显示内容，没有代码标记，因此该代码也被mathjax识别了，但是并没有展示成latex公式，造成的显示效果很差，因此我又加入了以下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/x-mathjax-config&quot;</span>&gt;</span></span><br><span class="line">	MathJax.Hub.Config(&#123;</span><br><span class="line">		tex2jax: &#123;</span><br><span class="line"><span class="javascript">			processEscapes: <span class="literal">true</span>,</span></span><br><span class="line"><span class="javascript">			processEnvironments: <span class="literal">false</span>,</span></span><br><span class="line"><span class="javascript">			skipTags: [<span class="string">&#x27;script&#x27;</span>, <span class="string">&#x27;noscript&#x27;</span>, <span class="string">&#x27;style&#x27;</span>, <span class="string">&#x27;textarea&#x27;</span>, <span class="string">&#x27;pre&#x27;</span>]</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>主要是<code>processEnvironments</code>使得我文本区的元素不会被检查为mathjax公式，具体原因参考<a href="https://docs.mathjax.org/en/v2.7-latest/options/preprocessors/tex2jax.html">mathjax文档</a>。</p>
+<p>关于katex，我找到了以下资料：</p>
+<ul>
+<li><a href="https://dawnarc.com/2019/09/hugokatex-intergration/">[hugo]KaTex Intergration</a></li>
+<li><a href="https://blog.atusy.net/2019/05/09/katex-in-hugo/">Hugo で KaTeX | Atusy’s blog</a></li>
+<li><a href="https://orianna-zzo.github.io/sci-tech/2018-03/blog养成记6-hugo中的latex渲染/">Blog养成记(6) Hugo中的LaTeX渲染 | ZHENG Zi’ou</a></li>
+<li><a href="https://takuti.me/note/hugo-kramdown-and-katex/">Hugo meets kramdown + KaTeX #gohugo | takuti.me</a></li>
+<li><a href="https://zh4ui.net/post/2018-06-30-hugo-katex-support/">Hugo+KaTex：在Markdown中嵌入数学公式 · 码文阁(Marvin’s Blog)</a></li>
+</ul>
+<p>关于mathjax，我找到了以下资料：</p>
+<ul>
+<li><a href="https://gohugo.io/content-management/formats/#issues-with-markdown">Supported Content Formats | hugo</a></li>
+<li><a href="http://doswa.com/2011/07/20/mathjax-in-markdown.html">MathJax in Markdown - Doswa</a></li>
+<li><a href="https://divadnojnarg.github.io/blog/mathjax/">Setting MathJax with Hugo | Hi, I am David</a></li>
+<li><a href="https://discourse.gohugo.io/t/solved-mathjax-stopped-working/5946">[solved] MathJax stopped working - support - Hugo</a></li>
+<li><a href="https://yihui.name/cn/2017/04/mathjax-markdown/">MathJax 与 Markdown 的究极融合 - Yihui Xie | 谢益辉</a></li>
+<li><a href="https://yihui.name/en/2018/07/latex-math-markdown/">The Best Way to Support LaTeX Math in Markdown with MathJax - Protect math as code, and remove those code tags via JavaScript later - Yihui Xie | 谢益辉</a></li>
+<li><a href="https://yihui.name/en/2018/07/latex-math-markdown/">使用Pandoc和KaTeX为HUGO添加LaTeX支持 - RayHY</a></li>
+<li><a href="https://note.qidong.name/2018/03/hugo-mathjax/">在Hugo中使用MathJax · 零壹軒·笔记</a></li>
+<li><a href="https://blog.pytool.com/language/golang/hugo/hugo_mathjax/">Hugo 集成 MathJax</a></li>
+<li><a href="%5Bhttps://dawnarc.com/2018/06/hugo%E9%9B%86%E6%88%90mathjax/%5D(https://dawnarc.com/2018/06/hugo集成mathjax/)">[hugo]集成MathJax</a></li>
+<li><a href="https://butui.me/post/yet-best-math-formula-support-for-hugo-with-mathjax/">Hugo 静态博客中迄今为止最佳数学公式支持-利用 MathJax &amp; MMark</a></li>
+</ul>
+<p>最后，我衷心地希望我们可以自由地在各个平台上使用markdown，并且用<code>$inline style$</code>来表示行内公式，用<code>$$display style$$</code>来表示块级公式，用<code>\$</code>来表示$符号，而不用担心能否完美支持。我相信，这一天一定会到来的。</p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hugo</tag>
+        <tag>博客</tag>
+        <tag>latex</tag>
+      </tags>
+  </entry>
+</search>
