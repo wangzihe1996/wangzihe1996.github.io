@@ -36,11 +36,9 @@ jobs:
     # Deploy Hexo
     - name: Deploy
       id: deploy
-      uses: sma11black/hexo-action@v1.0.4
+      uses: wangzihe1996/hexo-action@master
       with:
         deploy_key: ${{ secrets.HEXO_DEPLOY_PRIVATE_KEY }}
-        user_name: github-actions
-        user_email: 41898282+github-actions[bot]@users.noreply.github.com 
         commit_msg: ${{ github.event.head_commit.message }}
 
     # Use the output from the `deploy` step(use for test action)
