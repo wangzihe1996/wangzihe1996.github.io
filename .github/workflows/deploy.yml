@@ -40,12 +40,12 @@ jobs:
 
       - name: Set Git Config
         run: |
-          git config --global user.name 'github-actions[bot]'
+          git config --global user.name 'github-actions'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
       - name: Deploy blog
         env:
           COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
-          hexo generate
+          hexo clean
           hexo deploy -m "$COMMIT_MSG"
