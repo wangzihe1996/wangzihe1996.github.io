@@ -168,7 +168,7 @@ theme_config:
   scheme: Gemini
   
   # Dark Mode
-  darkmode: true
+  darkmode: false
   
   
   # ---------------------------------------------------------------
