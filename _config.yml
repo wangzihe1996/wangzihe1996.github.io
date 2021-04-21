@@ -99,6 +99,14 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: next
 
+# Emoji
+## For more information: https://github.com/next-theme/hexo-filter-emoji
+emoji:
+  enable: true
+  className: github-emoji
+  styles:
+  customEmojis:
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
@@ -420,6 +428,16 @@ theme_config:
   # Show previous post and next post in post footer if exists
   # Available values: left | right | false
   post_navigation: left
+
+  # Add some descriptions to your co-authors
+  coauthors:
+    [Baidu]:
+      # It will display nick
+      nick: 百度
+      # When your co-authors is click, will jump to there
+      link: https://www.baidu.com
+    # It defines the order of precedence in post meta
+    #post_meta_order: 0
   
   
   # ---------------------------------------------------------------
