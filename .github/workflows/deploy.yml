@@ -47,6 +47,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
+          whoami
           apt update && upgrade -y
           apt install pandoc -y
           npm ci
