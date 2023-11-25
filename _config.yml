@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 王紫荷的个人小站
+title: 王子和的博客
 subtitle: 学习、记录和分享
 description: 但行好事，莫问前程
 keywords: 深度学习 量子计算
-author: 王紫荷
+author: 王子和
 language: zh-CN
-timezone: ''
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
