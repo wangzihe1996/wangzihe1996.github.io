@@ -47,9 +47,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          whoami
-          apt update && upgrade -y
-          apt install pandoc -y
+          sudo apt update && upgrade -y
+          sudo apt install pandoc -y
           npm ci
 
       - name: Build with Hexo
