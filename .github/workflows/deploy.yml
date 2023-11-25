@@ -40,7 +40,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v3
 
-      - name: Use Node.js ${{ matrix.node_version }}
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "latest"
